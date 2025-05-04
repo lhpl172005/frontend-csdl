@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Managing System</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="components/StudentIdDropdown.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <a href="#" class="logo">
+                <img src="asset/image/sidebar/logo.svg" alt="Logo">
+            </a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active">
+                    <a href="#">
+                        <img src="asset/image/sidebar/score-icon.svg" alt="" class="nav-icon">
+                        <span>Score</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="asset/image/sidebar/student-icon.svg" alt="" class="nav-icon">
+                        <span>Student</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="asset/image/sidebar/teacher-icon.svg" alt="" class="nav-icon">
+                        <span>Teacher</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="asset/image/sidebar/subject-icon.svg" alt="" class="nav-icon">
+                        <span>Subject</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="asset/image/sidebar/class-icon.svg" alt="" class="nav-icon">
+                        <span>Class</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+             <div class="illustration-container">
+                <img src="asset/image/sidebar/sidebar-illustrator.svg" alt="Illustration">
+             </div>
+             <a href="#" class="logout-link">
+                 <img src="asset/image/sidebar/logout.svg" alt="" class="nav-icon">
+                 <span>Logout</span>
+             </a>
+        </div>
+    </aside>
+
+    <div class="main-content-wrapper">
+        <header class="main-header">
+            <div class="header-item search-box">
+                <form action="#">
+                    <img src="asset/image/header/search-icon.svg" alt="Search" class="header-icon search-icon">
+                    <input type="search" placeholder="Search">
+                </form>
+            </div>
+        
+            <div class="header-actions">
+                <div class="header-item action-box student-id-box">
+                    <button type="button" class="dropdown-toggle">
+                        <span class="dropdown-text">Student ID</span> <img src="asset/image/header/dropdown-icon.svg" alt="Dropdown" class="header-icon dropdown-icon">
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><button type="button" class="dropdown-item active">Student ID</button></li>
+                        <li><button type="button" class="dropdown-item">Subject ID</button></li>
+                        <li><button type="button" class="dropdown-item">Class ID</button></li>
+                      </ul>
+                    </div>
+        
+                <div class="header-item action-box notification-box">
+                    <button class="notification-btn" aria-label="Notifications">
+                        <img src="asset/image/header/noti-icon.svg" alt="Notifications" class="header-icon">
+                    </button>
+                </div>
+        
+                <div class="header-item action-box user-box">
+                    <button aria-label="User Menu">
+                        <img src="asset/image/header/profile-picture.svg" alt="User Avatar" class="avatar">
+                        <span class="user-name">Evan Yates</span>
+                        <img src="asset/image/header/dropdown-icon.svg" alt="Dropdown" class="header-icon dropdown-icon">
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="main-content-placeholder">
+            <h1>Score<h1>
+            </main>
+    </div>
+
+</body>
+</html>
