@@ -19,6 +19,7 @@
     text-align: left; /* Căn trái chữ */
     font-family: inherit;
     font-size: var(--font-size-base);
+    border-radius: inherit;
   }
   .student-id-box .dropdown-text {
     color: var(--text-color); /* <<< Màu chữ đen/tối theo yêu cầu */
@@ -37,10 +38,10 @@
   /* Style cho khung menu dropdown */
   .student-id-box .dropdown-menu {
     position: absolute; /* Định vị tuyệt đối so với .student-id-box */
-    top: calc(100% + 5px); /* Xuất hiện ngay dưới nút bấm, cách 5px */
+    top: calc(100% + 6px); /* Xuất hiện ngay dưới nút bấm, cách 5px */
     left: 0;
     background-color: var(--white-color);
-    border-radius: var(--border-radius-medium); /* Bo góc giống nút */
+    border-radius: var(--border-radius-large); /* Bo góc giống nút */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Đổ bóng */
     border: 1px solid var(--border-color);
     padding: 8px 0; /* Padding trên dưới cho menu */
@@ -62,16 +63,13 @@
     /* transform: translateY(-10px); */
     /* transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease; */
   }
-  
-  /* Style để hiện menu khi có class 'open' (Thêm bằng JS) */
-  /*
+
   .student-id-box.open .dropdown-menu {
     display: block;
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
-  */
   
   /* Style cho từng mục trong dropdown */
   .student-id-box .dropdown-item {
