@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'; // THÊM useState, useEffect
 import './ScoreContent.css';
 // Đường dẫn này bạn giữ nguyên nếu đúng với cấu trúc thư mục của bạn
 import PlusIcon from '../asset/image/top-section/plus.svg';
-// import EditIcon from '../../assets/EditIcon.svg'; // Bỏ comment nếu có icon
-// import ArrowLeftIcon from '../../assets/ArrowLeftIcon.svg'; // Bỏ comment nếu có icon
-// import ArrowRightIcon from '../../assets/ArrowRightIcon.svg'; // Bỏ comment nếu có icon
+import AddScoreModal from './AddScoreModal'; // Import modal mới
 
 // --- DỮ LIỆU MẪU ---
 const generateMockScores = (count = 25) => {
@@ -76,6 +74,8 @@ const ScoreContent = ({searchTerm, searchField}) => {
   const [scoreTo, setScoreTo] = useState('');
   const [currentSort, setCurrentSort] = useState('original');
 
+  // NOTE: State để quản lý việc mở/đóng modal
+  const [isAddScoreModalOpen, setIsAddScoreModalOpen] = useState(false);
 
   useEffect(() => {
     const generatedScores = generateMockScores(25);
@@ -155,6 +155,20 @@ const ScoreContent = ({searchTerm, searchField}) => {
     }
   };
 
+  // NOTE: Hàm xử lý khi submit form từ modal
+  const handleAddScoreSubmit = (newScoreData) => {
+    console.log('Adding new score:', newScoreData);
+    const newScoreEntry = {
+      ...newScoreData,
+      id: `score-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`, // Tạo ID duy nhất hơn
+    };
+    setAllScores(prevScores => [...prevScores, newScoreEntry]);
+    setIsAddScoreModalOpen(false); // Đóng modal sau khi thêm
+    // Tùy chọn: Chuyển đến trang cuối cùng để xem mục mới thêm
+    // const newTotalPages = Math.ceil((allScores.length + 1) / scoresPerPage);
+    // setCurrentPage(newTotalPages);
+  };
+
   const handleApplyFilter = () => {
     // useEffect sẽ tự động xử lý filter và sort khi scoreFrom, scoreTo, currentSort thay đổi.
     // Nút Apply có thể không cần thiết nếu bạn muốn filter "live".
@@ -187,7 +201,13 @@ const ScoreContent = ({searchTerm, searchField}) => {
     <div className="score-content-container">
       <div className="score-header">
         <h1 className="score-title">Score</h1>
-        <button className="add-score-button">
+        <button 
+          className="add-score-button"
+          onClick={() => {
+          console.log('Add Score button clicked, setting isAddScoreModalOpen to true'); // THÊM DÒNG NÀY ĐỂ DEBUG
+          setIsAddScoreModalOpen(true);
+          }}
+        >
           <img src={PlusIcon} alt="Add" className="add-score-icon" />
           Add Score
         </button>
@@ -255,6 +275,13 @@ const ScoreContent = ({searchTerm, searchField}) => {
           </button>
         </div>
       )}
+
+      {/* NOTE: Render Modal */}
+      <AddScoreModal
+        isOpen={isAddScoreModalOpen}
+        onClose={() => setIsAddScoreModalOpen(false)}
+        onAddScore={handleAddScoreSubmit}
+      />
     </div>
   );
 };
