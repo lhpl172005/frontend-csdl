@@ -1,0 +1,217 @@
+/* Kế thừa style từ AddScoreModal.css nếu có thể, hoặc định nghĩa lại */
+/* Dưới đây là một số style cơ bản và cho layout 2 cột */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(38, 48, 70, 0.6); /* Làm tối nền hơn một chút */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Đảm bảo modal nổi lên trên */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+
+.modal-content.edit-modal-content { /* Thêm class riêng để tránh xung đột */
+  background-color: white;
+  padding: 25px 40px 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 700px; /* Tăng chiều rộng cho layout 2 cột */
+  z-index: 1001;
+  position: relative;
+  transform: translateY(-20px) scale(0.95);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0s linear 0.3s;
+}
+
+.modal-overlay.open .modal-content.edit-modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0s linear 0s;
+}
+
+.modal-header-custom { /* Giữ nguyên hoặc copy từ AddScoreModal.css */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-top: 0px;
+}
+
+/* --- CSS CHO NÚT CLOSE (X) VÀ ICON SVG --- */
+.modal-close-btn {
+  /* NOTE: Điều chỉnh vị trí top và right để giống thiết kế hơn */
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: #f0f0f0; /* Màu nền xám nhạt cho nút tròn */
+  border: none;
+  width: 38px; /* Kích thước nút tròn */
+  height: 38px; /* Kích thước nút tròn */
+  border-radius: 35%; /* Làm cho nút tròn */
+  cursor: pointer;
+  display: flex; /* Để căn giữa icon SVG */
+  align-items: center; /* Để căn giữa icon SVG */
+  justify-content: center; /* Để căn giữa icon SVG */
+  transition: background-color 0.2s ease;
+  padding: 0; /* Bỏ padding mặc định của button nếu có */
+
+}
+
+.modal-close-btn:hover {
+  background-color: #e0e0e0; /* Nền đậm hơn một chút khi hover */
+}
+
+.modal-close-icon-svg {
+  width: 20px; /* Kích thước icon X nhỏ hơn một chút để vừa nút tròn */
+  height: 20px; /* Kích thước icon X */
+  display: block;
+  /* Nếu SVG của bạn cần đổi màu, ví dụ sang màu xám đậm: */
+  /* fill: #555; */
+  /* Hoặc nếu SVG của bạn là màu đen và bạn muốn nó xám hơn: */
+  /* filter: brightness(0) saturate(100%) invert(30%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(70%); */
+}
+/* --- KẾT THÚC CSS CHO NÚT CLOSE --- */
+
+.modal-header-custom h2 {
+  margin-top: 20px;
+  margin-bottom: 18px;
+  font-size: 20px;
+  color: #333;
+  font-weight: 600;
+  text-align: left;
+}
+
+.modal-error { /* Giữ nguyên hoặc copy từ AddScoreModal.css */
+  color: #e74c3c;
+  background-color: #fdeded;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Layout 2 cột cho form chỉnh sửa */
+.edit-score-grid {
+  display: grid;
+  grid-template-columns: 3fr 1fr; /* Hai cột bằng nhau */
+  gap: 30px; /* Khoảng cách giữa hai cột */
+  margin-bottom: 25px;
+}
+
+.edit-form-column .form-group {
+  margin-bottom: 18px;
+}
+
+.edit-form-column .form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 13px; /* Chữ nhỏ hơn một chút */
+  color: #555;
+}
+
+.edit-form-column .form-group input[type="text"],
+.edit-form-column .form-group input[type="number"] {
+  width: 100%;
+  padding: 10px 12px; /* Padding nhỏ hơn một chút */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.edit-form-column .form-group input[type="text"]:focus,
+.edit-form-column .form-group input[type="number"]:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+}
+
+
+/* Cột hiển thị dữ liệu hiện tại */
+.current-data-column {
+  padding-top: 5px; /* Căn chỉnh với cột input */
+}
+
+.data-display-group {
+  margin-bottom: 28px; /* Khoảng cách giữa các mục dữ liệu */
+}
+.data-display-group:last-child {
+    margin-bottom: 18px;
+}
+
+
+.data-label {
+  display: block;
+  font-size: 12px; /* Nhãn nhỏ hơn */
+  color: #6b7280; /* Màu xám cho nhãn */
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.data-value {
+  display: block;
+  font-size: 18px; /* Giá trị to hơn */
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+}
+
+.data-value.score-highlight {
+  color: #007bff; /* Màu xanh cho điểm hiện tại */
+  font-size: 22px; /* Điểm to hơn nữa */
+}
+
+/* Nút hành động cho Edit Modal */
+.modal-actions.edit-modal-actions {
+  display: flex;
+  justify-content: space-between; /* Đẩy 2 nút ra hai phía */
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb; /* Thêm đường kẻ phân cách */
+}
+
+.modal-actions.edit-modal-actions button {
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 550;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-delete {
+  background-color: #fee2e2; /* Màu nền đỏ nhạt */
+  color: #ef4444; /* Màu chữ đỏ */
+  border: 1px solid #fecaca;
+}
+.btn-delete:hover {
+  background-color: #fecaca;
+  color: #dc2626;
+}
+
+.btn-update {
+  background-color: #2563eb; /* Màu xanh dương */
+  color: white;
+  border: none;
+}
+.btn-update:hover {
+  background-color: #1d4ed8;
+}

@@ -3,6 +3,8 @@ import './AddScoreModal.css'; // File CSS riêng cho Modal
 import CloseIcon from '../asset/image/popup/x-icon.svg'; // ĐIỀU CHỈNH ĐƯỜNG DẪN NÀY
 
 function AddScoreModal({ isOpen, onClose, onAddScore }) {
+  // DEBUG: Log trạng thái isOpen mỗi khi AddScoreModal render
+  console.log('[AddScoreModal] Rendering. isOpen:', isOpen);
   const [studentId, setStudentId] = useState('');
   const [subjectId, setSubjectId] = useState('');
   const [classId, setClassId] = useState('');
@@ -21,6 +23,8 @@ function AddScoreModal({ isOpen, onClose, onAddScore }) {
   }, [isOpen]);
 
   if (!isOpen) {
+    // DEBUG: Log khi modal không được render vì isOpen là false
+    console.log('[AddScoreModal] Not rendering because isOpen is false.');
     return null;
   }
 
@@ -46,7 +50,7 @@ function AddScoreModal({ isOpen, onClose, onAddScore }) {
   };
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className={`modal-overlay ${isOpen ? 'open' : ''}`} onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <button type="button" className="modal-close-btn" onClick={onClose} aria-label="Close modal">
           {/* NOTE: Sử dụng icon SVG đã import */}

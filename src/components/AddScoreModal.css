@@ -9,6 +9,13 @@
   align-items: center;
   justify-content: center;
   z-index: 1000; /* Đảm bảo modal nổi lên trên */
+  transition: opacity 0.2s ease-in-out; /* Transition nhẹ cho opacity */
+}
+
+/* KHI MODAL MỞ (CÓ CLASS .open) */
+.modal-overlay.open {
+  display: flex !important; /* QUAN TRỌNG: Ép hiển thị khi có class 'open' */
+  opacity: 1 !important;   /* QUAN TRỌNG: Ép hiển thị */
 }
 
 .modal-content {
@@ -21,6 +28,18 @@
   z-index: 1001;
   animation: fadeInModal 0.3s ease-out;
   position: relative;
+    /* Thêm để đảm bảo nó hiện ra nếu bị ẩn bởi transform */
+  transform: translate(0, 0) scale(1) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* KHI MODAL MỞ (CÓ CLASS .open) */
+.modal-overlay.open .modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out, visibility 0s linear 0s;
 }
 
 @keyframes fadeInModal {

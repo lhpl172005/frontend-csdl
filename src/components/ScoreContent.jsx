@@ -3,6 +3,7 @@ import './ScoreContent.css';
 // Đường dẫn này bạn giữ nguyên nếu đúng với cấu trúc thư mục của bạn
 import PlusIcon from '../asset/image/top-section/plus.svg';
 import AddScoreModal from './AddScoreModal'; // Import modal mới
+import EditScoreModal from './EditScoreModal';
 
 // --- DỮ LIỆU MẪU ---
 const generateMockScores = (count = 25) => {
@@ -28,7 +29,7 @@ const generateMockScores = (count = 25) => {
 };
 
 // --- COMPONENT THẺ ĐIỂM ---
-const ScoreCard = ({ scoreData }) => {
+const ScoreCard = ({ scoreData, onEdit }) => {
   const handleEditScore = () => {
     console.log('Edit score for Student ID:', scoreData.studentId, 'Subject ID:', scoreData.subjectId);
   };
@@ -52,7 +53,12 @@ const ScoreCard = ({ scoreData }) => {
       </div>
       <div className="score-card-actions">
         <span className="score-value-main">{scoreData.score.toFixed(2)}</span>
-        <button className="edit-score-button" onClick={handleEditScore}>
+        <button 
+          className="edit-score-button" 
+          onClick={() => {
+            console.log('[ScoreCard] Edit button clicked, calling onEdit with:', scoreData); // DEBUG
+            onEdit(scoreData);
+          }}>
           {/* <img src={EditIcon} alt="Edit" className="edit-score-icon" /> */}
           <span className="edit-score-icon-placeholder">+</span>
           Edit Score
@@ -76,6 +82,9 @@ const ScoreContent = ({searchTerm, searchField}) => {
 
   // NOTE: State để quản lý việc mở/đóng modal
   const [isAddScoreModalOpen, setIsAddScoreModalOpen] = useState(false);
+  const [isEditScoreModalOpen, setIsEditScoreModalOpen] = useState(false);
+  const [editingScore, setEditingScore] = useState(null); // Lưu dữ liệu điểm đang sửa
+
 
   useEffect(() => {
     const generatedScores = generateMockScores(25);
@@ -169,6 +178,36 @@ const ScoreContent = ({searchTerm, searchField}) => {
     // setCurrentPage(newTotalPages);
   };
 
+  // NOTE: 4. Thêm Hàm Xử Lý cho Edit Modal
+  const handleOpenEditModal = (scoreToEdit) => {
+    console.log('[ScoreContent] handleOpenEditModal called. Current isAddScoreModalOpen:', isAddScoreModalOpen, 'Current isEditScoreModalOpen:', isEditScoreModalOpen);
+    console.log('[ScoreContent] handleOpenEditModal - scoreToEdit:', scoreToEdit);
+    setIsAddScoreModalOpen(false); // << THÊM DÒNG NÀY: Đóng Add modal (nếu đang mở)
+    setEditingScore(scoreToEdit);
+    setIsEditScoreModalOpen(true);
+    console.log('[ScoreContent] Set isEditScoreModalOpen to true, isAddScoreModalOpen to false.');
+  };
+
+  const handleUpdateScoreSubmit = (scoreId, updatedData) => {
+    // console.log("Updating score:", scoreId, updatedData); // Bỏ comment nếu cần debug
+    setAllScores(prevScores =>
+      prevScores.map(score =>
+        score.id === scoreId ? { ...score, ...updatedData, id: score.id } : score // Giữ lại ID gốc
+      )
+    );
+    setIsEditScoreModalOpen(false);
+    setEditingScore(null);
+  };
+
+  const handleDeleteScoreSubmit = (scoreIdToDelete) => {
+    // console.log("Deleting score:", scoreIdToDelete); // Bỏ comment nếu cần debug
+    setAllScores(prevScores =>
+      prevScores.filter(score => score.id !== scoreIdToDelete)
+    );
+    setIsEditScoreModalOpen(false);
+    setEditingScore(null);
+  };
+
   const handleApplyFilter = () => {
     // useEffect sẽ tự động xử lý filter và sort khi scoreFrom, scoreTo, currentSort thay đổi.
     // Nút Apply có thể không cần thiết nếu bạn muốn filter "live".
@@ -196,6 +235,8 @@ const ScoreContent = ({searchTerm, searchField}) => {
     console.log('[ScoreContent] Apply button clicked, re-filtered scores.');
   };
 
+  // DEBUG: Log trạng thái của isAddScoreModalOpen mỗi khi component render lại
+  console.log('[ScoreContent] Rendering. isAddScoreModalOpen:', isAddScoreModalOpen, 'isEditScoreModalOpen:', isEditScoreModalOpen);
 
   return (
     <div className="score-content-container">
@@ -204,8 +245,11 @@ const ScoreContent = ({searchTerm, searchField}) => {
         <button 
           className="add-score-button"
           onClick={() => {
-          console.log('Add Score button clicked, setting isAddScoreModalOpen to true'); // THÊM DÒNG NÀY ĐỂ DEBUG
-          setIsAddScoreModalOpen(true);
+            console.log('[ScoreContent] Add Score button clicked. Current isAddScoreModalOpen:', isAddScoreModalOpen);
+            setIsEditScoreModalOpen(false); // << THÊM DÒNG NÀY: Đóng Edit modal (nếu đang mở)
+            setEditingScore(null);      // << THÊM DÒNG NÀY: Reset editingScore
+            setIsAddScoreModalOpen(true);
+            console.log('[ScoreContent] Set isAddScoreModalOpen to true.');
           }}
         >
           <img src={PlusIcon} alt="Add" className="add-score-icon" />
@@ -247,7 +291,11 @@ const ScoreContent = ({searchTerm, searchField}) => {
       <div className="score-list">
         {currentScoresToDisplay.length > 0 ? (
           currentScoresToDisplay.map((score) => (
-            <ScoreCard key={score.id} scoreData={score} />
+            <ScoreCard 
+            key={score.id} 
+            scoreData={score}
+            onEdit={handleOpenEditModal}
+            />
           ))
         ) : (
           <p className="no-scores-message">No scores found matching your criteria.</p>
@@ -279,8 +327,24 @@ const ScoreContent = ({searchTerm, searchField}) => {
       {/* NOTE: Render Modal */}
       <AddScoreModal
         isOpen={isAddScoreModalOpen}
-        onClose={() => setIsAddScoreModalOpen(false)}
+        onClose={() => {
+          console.log('[ScoreContent] AddScoreModal onClose called. Setting isAddScoreModalOpen to false.'); // DEBUG
+          setIsAddScoreModalOpen(false)
+        }}
         onAddScore={handleAddScoreSubmit}
+      />
+
+      {/* NOTE: 5. Render EditScoreModal */}
+      <EditScoreModal
+        isOpen={isEditScoreModalOpen}
+        onClose={() => {
+          setIsEditScoreModalOpen(false);
+          setEditingScore(null); // Reset điểm đang sửa khi đóng
+          console.log('[ScoreContent] EditModal onClose called'); // DEBUG
+        }}
+        scoreData={editingScore} // Truyền dữ liệu điểm đang sửa
+        onUpdateScore={handleUpdateScoreSubmit}
+        onDeleteScore={handleDeleteScoreSubmit}
       />
     </div>
   );
