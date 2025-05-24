@@ -2,22 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import './StudentIdDropdown.css'; // Đảm bảo file này tồn tại và đúng tên
 
 // Component nhận prop là đường dẫn icon từ Header
-function StudentIdDropdown({ dropdownIconSrc, initialValue, onChange }) {
+function StudentIdDropdown({ dropdownIconSrc, initialValue, onChange, options = [] }) {
   const [isOpen, setIsOpen] = useState(false);
-  const options = [
-    { value: 'studentId', label: 'Student ID' },
-    { value: 'subjectId', label: 'Subject ID' },
-    { value: 'classId', label: 'Class ID' },
-  ];
 
   // selectedValue lưu trữ giá trị thực (ví dụ: 'studentId')
   const [selectedValue, setSelectedValue] = useState(initialValue || (options.length > 0 ? options[0].value : ''));
   const dropdownRef = useRef(null);
 
-  // Tìm nhãn của option đang được chọn để hiển thị
-  const currentSelectedOptionObject = options.find(opt => opt.value === selectedValue);
   // selectedOptionLabel sẽ là nhãn hiển thị (ví dụ: "Student ID")
-  const selectedOptionLabel = currentSelectedOptionObject ? currentSelectedOptionObject.label : (options.length > 0 ? options[0].label : 'Select...');
+  const selectedOptionLabel = options.find(opt => opt.value === selectedValue)?.label || (options.length > 0 ? options[0].label : 'Select Field');
 
   const toggleDropdown = () => {
     console.log('Dropdown toggled! Current isOpen:', isOpen);
@@ -27,16 +20,32 @@ function StudentIdDropdown({ dropdownIconSrc, initialValue, onChange }) {
   // NOTE: Sửa lại hàm này để nhận đúng `optionValue` (là một chuỗi)
   const handleOptionClick = (clickedOptionValue) => {
     console.log('Selected value:', clickedOptionValue);
-    setSelectedValue(clickedOptionValue); // Cập nhật state nội bộ
     onChange(clickedOptionValue);         // Gọi hàm onChange từ props với giá trị đã chọn
     setIsOpen(false);
   };
 
   useEffect(() => {
-    if (initialValue && initialValue !== selectedValue) {
-      setSelectedValue(initialValue);
+    if (initialValue) {
+      const isValidInitialValue = options.some(opt => opt.value === initialValue);
+      if (isValidInitialValue) {
+        if (selectedValue !== initialValue) {
+            setSelectedValue(initialValue);
+        }
+      } else if (options.length > 0) {
+        setSelectedValue(options[0].value);
+        onChange(options[0].value); 
+      } else {
+        setSelectedValue(''); 
+        if (initialValue !== '') onChange(''); 
+      }
+    } else if (options.length > 0) {
+        if (selectedValue !== options[0].value) { 
+            setSelectedValue(options[0].value);
+        }
+    } else {
+        setSelectedValue('');
     }
-  }, [initialValue]); // Chỉ phụ thuộc vào initialValue
+  }, [initialValue, options, onChange]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -53,6 +62,7 @@ function StudentIdDropdown({ dropdownIconSrc, initialValue, onChange }) {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [isOpen]);
+  
 
   return (
     <div

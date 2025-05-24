@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // Import các file SVG cho Sidebar
 // Đường dẫn tương đối từ components/sidebar.jsx đến asset/image/sidebar/
@@ -14,20 +14,20 @@ import logoutIcon from '../asset/image/sidebar/logout.svg';
 // Import file CSS riêng cho Sidebar (nếu có)
 import './sidebar.css'; // Đảm bảo file này tồn tại
 
-function Sidebar() { // Đổi tên thành Sidebar nếu muốn (PascalCase)
-  const [activeItem, setActiveItem] = useState('Score');
+function Sidebar({ activePage, onNavigate }) { // Đổi tên thành Sidebar nếu muốn (PascalCase)
+  // const [activeItem, setActiveItem] = useState('Score');
 
   const navItems = [
-    { key: 'Score', label: 'Score', iconSrc: scoreIcon },
-    { key: 'Student', label: 'Student', iconSrc: studentIcon },
-    { key: 'Teacher', label: 'Teacher', iconSrc: teacherIcon },
-    { key: 'Subject', label: 'Subject', iconSrc: subjectIcon },
-    { key: 'Class', label: 'Class', iconSrc: classIcon },
+    { key: 'score', label: 'Score', iconSrc: scoreIcon },
+    { key: 'student', label: 'Student', iconSrc: studentIcon },
+    { key: 'teacher', label: 'Teacher', iconSrc: teacherIcon },
+    { key: 'subject', label: 'Subject', iconSrc: subjectIcon },
+    { key: 'class', label: 'Class', iconSrc: classIcon },
   ];
 
   const handleItemClick = (itemKey) => {
     console.log('Sidebar item clicked:', itemKey); // Giữ lại để debug
-    setActiveItem(itemKey);
+    onNavigate(itemKey);
   };
 
   return (
@@ -42,7 +42,9 @@ function Sidebar() { // Đổi tên thành Sidebar nếu muốn (PascalCase)
       <nav className="sidebar-nav">
         <ul>
           {navItems.map((item) => (
-            <li key={item.key} className={activeItem === item.key ? 'active' : ''}>
+            <li 
+              key={item.key} 
+              className={activePage === item.key ? 'active' : ''}>
               <a
                 href="#"
                 onClick={(e) => {

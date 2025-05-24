@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 /* src/components/ScoreContent.css */
 .score-content-container {
   padding: 10px; /* Tăng padding cho thoáng hơn */
-  font-family: 'Inter', sans-serif; /* Sử dụng font Inter cho hiện đại */
+  font-family: "Nunito Sans", sans-serif;
 }
 
 /* Dòng 1: Title và Button Add Score */
@@ -13,6 +15,7 @@
 }
 
 .score-title {
+  font-family: "Nunito Sans", sans-serif;
   font-size: 28px; /* Kích thước chữ to hơn cho "Score" */
   font-weight: 700; /* Đậm hơn */
   color: #111827; /* Màu chữ tối hơn */
@@ -25,8 +28,9 @@
   border: none;
   border-radius: 10px; /* Bo tròn góc */
   padding: 8px 14px; /* Điều chỉnh padding */
+  font-family: "Nunito Sans", sans-serif;
   font-size: 14px; /* Kích thước chữ */
-  font-weight: 600; /* Hơi đậm */
+  font-weight: 700; /* Hơi đậm */
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -70,7 +74,8 @@
 
 .filter-label,
 .sort-label {
-  font-weight: 600; /* Đậm vừa */
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700; /* Đậm vừa */
   color: #2563eb; /* Màu xanh cho chữ "Filter:" và "Sort:" */
   font-size: 15px;
   margin-right: 4px;
@@ -81,6 +86,7 @@
   border: 1px solid #d1d5db; /* Màu viền xám nhạt hơn */
   border-radius: 8px;
   width: 80px; /* Độ rộng của ô input score */
+  font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   text-align: center;
   color: #374151;
@@ -98,6 +104,7 @@
 }
 
 .filter-separator {
+  font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   color: #4b5563;
   font-weight: 500;
@@ -110,6 +117,7 @@
   border: none;
   border-radius: 8px;
   padding: 7px 16px;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
@@ -137,8 +145,9 @@
   border: none;
   border-radius: 8px;
   padding: 7px 12px;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 13px;
-  font-weight: 550;
+  font-weight: 700;
   cursor: pointer;
   transition: opacity 0.2s ease-in-out, transform 0.1s ease, background-color 0.2s ease, color 0.2s ease;
   text-align: center;
@@ -187,9 +196,10 @@
 .score-card {
   display: flex;
   align-items: stretch; /* Cho decorator và content cao bằng nhau */
-  background-color: #f3f8ff; /* Màu nền nhạt như trong ảnh */
+  background-color: #ffffff; /* Màu nền nhạt như trong ảnh */
   border-radius: 10px; /* Bo góc */
   padding: 15px 20px; /* Padding bên trong thẻ */
+  border-left: 5px solid #4A90E2;
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); */ /* Bóng đổ nhẹ nếu muốn */
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
@@ -198,12 +208,11 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.07);
 }
 
-.score-card-decorator {
-  width: 5px; /* Độ rộng của thanh dọc màu xanh */
-  background-color: #2563eb; /* Màu xanh dương */
-  border-radius: 3px 0 0 3px; /* Bo góc cho thanh dọc */
-  margin-right: 15px; /* Khoảng cách với phần thông tin */
-}
+/*.score-card-decorator {
+  width: 5px; 
+  background-color: #2563eb; 
+  border-radius: 3px 0 0 3px; 
+  margin-right: 15px; */
 
 .score-card-info {
   flex-grow: 1; /* Cho phép phần thông tin chiếm không gian */
@@ -219,6 +228,7 @@
 }
 
 .info-label {
+  font-family: "Nunito Sans", sans-serif;
   font-size: 11px; /* Chữ nhỏ hơn cho nhãn */
   color: #6b7280; /* Màu xám cho nhãn */
   margin-bottom: 2px;
@@ -227,9 +237,10 @@
 }
 
 .info-value {
+  font-family: "Nunito Sans", sans-serif;
   font-size: 14px; /* Chữ to hơn cho giá trị */
   color: #1f2937; /* Màu đen cho giá trị */
-  font-weight: 600; /* In đậm giá trị */
+  font-weight: 700; /* In đậm giá trị */
 }
 
 .score-card-actions {
@@ -242,10 +253,11 @@
 }
 
 .score-value-main {
-  font-size: 22px; /* Chữ to cho điểm chính */
-  font-weight: 700; /* In đậm điểm chính */
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 24px; /* Chữ to cho điểm chính */
+  font-weight: 800; /* In đậm điểm chính */
   color: #2563eb; /* Màu xanh cho điểm chính */
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .edit-score-button {
@@ -254,8 +266,9 @@
   border: none;
   border-radius: 6px;
   padding: 5px 8px;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -277,6 +290,7 @@
   text-align: center;
   color: #6b7280;
   padding: 20px;
+  font-family: "Nunito Sans", sans-serif;
   font-style: italic;
 }
 
@@ -296,6 +310,7 @@
   border: none;
   border-radius: 6px;
   padding: 8px 12px;
+  font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -317,6 +332,7 @@
 }
 
 .pagination-info {
+  font-family: "Nunito Sans", sans-serif;
   font-size: 13px;
   color: #4b5563;
   font-weight: 500;

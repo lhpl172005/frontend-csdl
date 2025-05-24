@@ -12,12 +12,38 @@ import dropdownIcon from '../asset/image/header/dropdown-icon.svg'; // Icon dùn
 // Import CSS riêng cho Header (nếu có)
 // import './header.css';
 
-function Header({ searchTerm, searchField, onSearchChange, onSearchFieldChange }) { // Đổi tên thành Header nếu muốn (PascalCase)
+function Header({ searchTerm, searchField, onSearchChange, onSearchFieldChange, activePage }) { // Đổi tên thành Header nếu muốn (PascalCase)
+  // Định nghĩa các options cho từng trang
+  const scoreSearchOptions = [
+    { value: 'studentId', label: 'Student ID' },
+    { value: 'subjectId', label: 'Subject ID' },
+    { value: 'classId', label: 'Class ID' },
+  ];
+
+  const studentSearchOptions = [
+    { value: 'fullName', label: 'Full Name' },
+    { value: 'studentId', label: 'Student ID' },
+    { value: 'dob', label: 'DOB' },
+    { value: 'major', label: 'Major' },
+  ];
+
+  // Chọn options dựa trên activePage
+  let currentSearchOptions;
+  if (activePage === 'student') {
+    currentSearchOptions = studentSearchOptions;
+  } else if (activePage === 'score') {
+    currentSearchOptions = scoreSearchOptions;
+  } else {
+    // Mặc định hoặc cho các trang khác (ví dụ: Teacher, Subject, Class)
+    // Bạn có thể định nghĩa options riêng cho chúng hoặc dùng một mảng rỗng/mặc định
+    currentSearchOptions = [{ value: '', label: 'Select Field' }]; 
+  }
+
   return (
     // Lấy cấu trúc HTML từ file index.html gốc của bạn
     <header className="main-header">
       <div className="header-item search-box">
-        <form action="#">
+        <form onSubmit={e => e.preventDefault()}>
           <img src={searchIcon} alt="Search" className="header-icon search-icon" />
           <input 
             type="search" 
@@ -32,6 +58,7 @@ function Header({ searchTerm, searchField, onSearchChange, onSearchFieldChange }
         {/* Render component Dropdown và truyền icon vào */}
         <StudentIdDropdown 
           dropdownIconSrc={dropdownIcon}
+          options={currentSearchOptions}
           initialValue={searchField} // searchField từ App.jsx làm giá trị ban đầu
           onChange={onSearchFieldChange} // onSearchFieldChange từ App.jsx
         />

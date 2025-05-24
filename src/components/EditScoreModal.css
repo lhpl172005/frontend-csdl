@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 /* Kế thừa style từ AddScoreModal.css nếu có thể, hoặc định nghĩa lại */
 /* Dưới đây là một số style cơ bản và cho layout 2 cột */
 .modal-overlay {
@@ -92,7 +94,7 @@
   margin-bottom: 18px;
   font-size: 20px;
   color: #333;
-  font-weight: 600;
+  font-weight: 700;
   text-align: left;
 }
 
@@ -169,7 +171,7 @@
 .data-value {
   display: block;
   font-size: 18px; /* Giá trị to hơn */
-  font-weight: 600;
+  font-weight: 700;
   color: #333;
   text-align: center;
 }

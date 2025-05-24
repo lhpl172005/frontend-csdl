@@ -1,4 +1,6 @@
 /* --- Cài đặt cơ bản và Biến CSS --- */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 :root {
     /* EDIT HERE: Màu sắc */
     --primary-color: #3F8CFF;
@@ -38,7 +40,8 @@
   }
   
   body {
-    font-family: var(--font-family-base);
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 500;
     background-color: var(--light-gray-bg); /* 1. Nền background tổng */
     color: var(--text-color);
     line-height: 1.5;

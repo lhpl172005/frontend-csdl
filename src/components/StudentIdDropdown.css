@@ -23,7 +23,7 @@
   }
   .student-id-box .dropdown-text {
     color: var(--text-color); /* <<< Màu chữ đen/tối theo yêu cầu */
-    font-weight: 500; /* Có thể chỉnh độ đậm nếu muốn */
+    font-weight: 630; /* Có thể chỉnh độ đậm nếu muốn */
     white-space: nowrap; /* Không xuống dòng */
     overflow: hidden;
     text-overflow: ellipsis; /* Thêm ... nếu chữ quá dài */

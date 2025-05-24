@@ -39,7 +39,7 @@
 .sidebar-nav li.active a {
     background-color: var(--primary-color-light); /* Nền xanh nhạt */
     color: var(--primary-color); /* Chữ màu xanh */
-    font-weight: 600;
+    font-weight: 700;
 }
 
 /* Thanh dọc màu xanh bên phải khi active */
