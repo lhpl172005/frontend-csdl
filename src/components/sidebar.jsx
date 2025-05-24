@@ -4,10 +4,10 @@ import React, { useState } from 'react';
 // Đường dẫn tương đối từ components/sidebar.jsx đến asset/image/sidebar/
 import logoSvg from '../asset/image/sidebar/logo.svg';
 import scoreIcon from '../asset/image/sidebar/score-icon.svg';
-import studentIcon from '../asset/image/sidebar/student-icon.svg';
-import teacherIcon from '../asset/image/sidebar/teacher-icon.svg';
-import subjectIcon from '../asset/image/sidebar/subject-icon.svg';
-import classIcon from '../asset/image/sidebar/class-icon.svg';
+import studentIcon from '../asset/image/sidebar/student-icon-active.svg';
+import teacherIcon from '../asset/image/sidebar/teacher-icon-active.svg';
+import subjectIcon from '../asset/image/sidebar/subject-icon-active.svg';
+import classIcon from '../asset/image/sidebar/class-icon-active.svg';
 import illustratorSvg from '../asset/image/sidebar/sidebar-illustrator.svg';
 import logoutIcon from '../asset/image/sidebar/logout.svg';
 

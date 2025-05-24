@@ -12,20 +12,29 @@ import dropdownIcon from '../asset/image/header/dropdown-icon.svg'; // Icon dùn
 // Import CSS riêng cho Header (nếu có)
 // import './header.css';
 
-function Header() { // Đổi tên thành Header nếu muốn (PascalCase)
+function Header({ searchTerm, searchField, onSearchChange, onSearchFieldChange }) { // Đổi tên thành Header nếu muốn (PascalCase)
   return (
     // Lấy cấu trúc HTML từ file index.html gốc của bạn
     <header className="main-header">
       <div className="header-item search-box">
         <form action="#">
           <img src={searchIcon} alt="Search" className="header-icon search-icon" />
-          <input type="search" placeholder="Search" />
+          <input 
+            type="search" 
+            placeholder="Search"
+            value={searchTerm}
+            onChange={(e) => onSearchChange(e.target.value)} // Gọi hàm từ App.jsx
+            />
         </form>
       </div>
 
       <div className="header-actions">
         {/* Render component Dropdown và truyền icon vào */}
-        <StudentIdDropdown dropdownIconSrc={dropdownIcon} />
+        <StudentIdDropdown 
+          dropdownIconSrc={dropdownIcon}
+          initialValue={searchField} // searchField từ App.jsx làm giá trị ban đầu
+          onChange={onSearchFieldChange} // onSearchFieldChange từ App.jsx
+        />
 
         <div className="header-item action-box notification-box">
           <button className="notification-btn" aria-label="Notifications">

@@ -1,25 +1,42 @@
 import React, { useState, useEffect, useRef } from 'react';
-
-// Import CSS riêng cho Dropdown
 import './StudentIdDropdown.css'; // Đảm bảo file này tồn tại và đúng tên
 
 // Component nhận prop là đường dẫn icon từ Header
-function StudentIdDropdown({ dropdownIconSrc }) { // Tên component nên là PascalCase
+function StudentIdDropdown({ dropdownIconSrc, initialValue, onChange }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('Student ID');
+  const options = [
+    { value: 'studentId', label: 'Student ID' },
+    { value: 'subjectId', label: 'Subject ID' },
+    { value: 'classId', label: 'Class ID' },
+  ];
+
+  // selectedValue lưu trữ giá trị thực (ví dụ: 'studentId')
+  const [selectedValue, setSelectedValue] = useState(initialValue || (options.length > 0 ? options[0].value : ''));
   const dropdownRef = useRef(null);
-  const options = ['Student ID', 'Subject ID', 'Class ID'];
+
+  // Tìm nhãn của option đang được chọn để hiển thị
+  const currentSelectedOptionObject = options.find(opt => opt.value === selectedValue);
+  // selectedOptionLabel sẽ là nhãn hiển thị (ví dụ: "Student ID")
+  const selectedOptionLabel = currentSelectedOptionObject ? currentSelectedOptionObject.label : (options.length > 0 ? options[0].label : 'Select...');
 
   const toggleDropdown = () => {
-    console.log('Dropdown toggled!'); // Debug
-    setIsOpen(!isOpen);
+    console.log('Dropdown toggled! Current isOpen:', isOpen);
+    setIsOpen(prevIsOpen => !prevIsOpen); // Sử dụng callback để đảm bảo giá trị mới nhất
   };
 
-  const handleOptionClick = (option) => {
-    console.log('Selected:', option); // Debug
-    setSelectedOption(option);
+  // NOTE: Sửa lại hàm này để nhận đúng `optionValue` (là một chuỗi)
+  const handleOptionClick = (clickedOptionValue) => {
+    console.log('Selected value:', clickedOptionValue);
+    setSelectedValue(clickedOptionValue); // Cập nhật state nội bộ
+    onChange(clickedOptionValue);         // Gọi hàm onChange từ props với giá trị đã chọn
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    if (initialValue && initialValue !== selectedValue) {
+      setSelectedValue(initialValue);
+    }
+  }, [initialValue]); // Chỉ phụ thuộc vào initialValue
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -38,34 +55,35 @@ function StudentIdDropdown({ dropdownIconSrc }) { // Tên component nên là Pas
   }, [isOpen]);
 
   return (
-    // Lấy cấu trúc HTML từ file index.html gốc của bạn
     <div
       className={`header-item action-box student-id-box ${isOpen ? 'open' : ''}`}
       ref={dropdownRef}
     >
       <button type="button" className="dropdown-toggle" onClick={toggleDropdown}>
-        <span className="dropdown-text">{selectedOption}</span>
-        {/* Sử dụng prop icon */}
+        {/* NOTE: Hiển thị selectedOptionLabel thay vì selectedValue */}
+        <span className="dropdown-text">{selectedOptionLabel}</span>
         <img src={dropdownIconSrc} alt="Dropdown" className="header-icon dropdown-icon" />
       </button>
 
-      {/* Menu dropdown từ index.html */}
-      <ul className="dropdown-menu">
-        {options.map((option) => (
-          <li key={option}>
-            <button
-              type="button"
-              className={`dropdown-item ${selectedOption === option ? 'active' : ''}`}
-              onClick={() => handleOptionClick(option)}
-            >
-              {option}
-            </button>
-          </li>
-        ))}
-      </ul>
+      {isOpen && (
+        <ul className="dropdown-menu">
+          {options.map((option) => ( // option ở đây là object {value, label}
+            <li key={option.value}>
+              <button
+                type="button"
+                className={`dropdown-item ${selectedValue === option.value ? 'active' : ''}`}
+                // NOTE: onClick gọi handleOptionClick với option.value (là một chuỗi)
+                onClick={() => handleOptionClick(option.value)}
+              >
+                {/* Hiển thị nhãn của option */}
+                {option.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
 
-// Đổi tên export nếu bạn đổi tên function/file
-export default StudentIdDropdown; // Hoặc export default studentID_dropdown;
+export default StudentIdDropdown;

@@ -1,0 +1,407 @@
+/* src/components/ScoreContent.css */
+.score-content-container {
+  padding: 10px; /* Tăng padding cho thoáng hơn */
+  font-family: 'Inter', sans-serif; /* Sử dụng font Inter cho hiện đại */
+}
+
+/* Dòng 1: Title và Button Add Score */
+.score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Khoảng cách với dòng dưới */
+}
+
+.score-title {
+  font-size: 28px; /* Kích thước chữ to hơn cho "Score" */
+  font-weight: 700; /* Đậm hơn */
+  color: #111827; /* Màu chữ tối hơn */
+  margin: 0;
+}
+
+.add-score-button {
+  background-color: #2563eb; /* Màu xanh dương chuẩn */
+  color: white;
+  border: none;
+  border-radius: 10px; /* Bo tròn góc */
+  padding: 8px 14px; /* Điều chỉnh padding */
+  font-size: 14px; /* Kích thước chữ */
+  font-weight: 600; /* Hơi đậm */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Khoảng cách giữa icon và text */
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.add-score-button:hover {
+  background-color: #1d4ed8; /* Màu xanh đậm hơn khi hover */
+  transform: translateY(-2px); /* Hiệu ứng nhấc nhẹ hơn */
+}
+
+.add-score-button:active {
+  transform: translateY(-1px);
+}
+
+.add-score-icon {
+  width: 18px; /* Kích thước icon */
+  height: 18px;
+  /* fill: white; */ /* SVG nên tự có màu trắng hoặc dùng currentColor */
+}
+
+
+/* Dòng 2: Filter và Sort */
+.controls-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+  gap: 15px; /* Khoảng cách giữa Filter và Sort khi xuống dòng */
+}
+
+/* Phần Filter */
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap; /* Cho phép các item trong filter xuống dòng */
+}
+
+.filter-label,
+.sort-label {
+  font-weight: 600; /* Đậm vừa */
+  color: #2563eb; /* Màu xanh cho chữ "Filter:" và "Sort:" */
+  font-size: 15px;
+  margin-right: 4px;
+}
+
+.score-input {
+  padding: 7px 10px;
+  border: 1px solid #d1d5db; /* Màu viền xám nhạt hơn */
+  border-radius: 8px;
+  width: 80px; /* Độ rộng của ô input score */
+  font-size: 14px;
+  text-align: center;
+  color: #374151;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.score-input::placeholder {
+  color: #9ca3af; /* Màu cho placeholder */
+}
+
+.score-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+.filter-separator {
+  font-size: 14px;
+  color: #4b5563;
+  font-weight: 500;
+  margin: 0 2px;
+}
+
+.apply-button {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.apply-button:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+.apply-button:active {
+  transform: translateY(0);
+}
+
+/* Phần Sort */
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap; /* Cho phép các nút sort xuống dòng */
+}
+
+.sort-button {
+  border: none;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 550;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out, transform 0.1s ease, background-color 0.2s ease, color 0.2s ease;
+  text-align: center;
+}
+
+.sort-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.sort-button:active {
+  transform: translateY(0);
+}
+
+.sort-button.original {
+  background-color: #e0f2fe; /* Light cyan */
+  color: #0891b2; /* Darker cyan */
+}
+.sort-button.original:hover {
+  background-color: #b9e8fa;
+}
+
+.sort-button.highest {
+  background-color: #e0e7ff; /* Light indigo */
+  color: #4f46e5; /* Darker indigo */
+}
+.sort-button.highest:hover {
+  background-color: #c7d2fe;
+}
+
+.sort-button.lowest {
+  background-color: #fce7f3; /* Light pink */
+  color: #db2777; /* Darker pink */
+}
+.sort-button.lowest:hover {
+  background-color: #fbcfe8;
+}
+
+/* --- CSS CHO THẺ ĐIỂM (SCORE CARD) --- */
+.score-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Khoảng cách giữa các thẻ điểm */
+  margin-bottom: 25px; /* Khoảng cách với phân trang */
+}
+
+.score-card {
+  display: flex;
+  align-items: stretch; /* Cho decorator và content cao bằng nhau */
+  background-color: #f3f8ff; /* Màu nền nhạt như trong ảnh */
+  border-radius: 10px; /* Bo góc */
+  padding: 15px 20px; /* Padding bên trong thẻ */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); */ /* Bóng đổ nhẹ nếu muốn */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.score-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.07);
+}
+
+.score-card-decorator {
+  width: 5px; /* Độ rộng của thanh dọc màu xanh */
+  background-color: #2563eb; /* Màu xanh dương */
+  border-radius: 3px 0 0 3px; /* Bo góc cho thanh dọc */
+  margin-right: 15px; /* Khoảng cách với phần thông tin */
+}
+
+.score-card-info {
+  flex-grow: 1; /* Cho phép phần thông tin chiếm không gian */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Layout lưới cho thông tin */
+  gap: 10px 20px; /* Khoảng cách giữa các mục thông tin */
+  align-items: center;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 11px; /* Chữ nhỏ hơn cho nhãn */
+  color: #6b7280; /* Màu xám cho nhãn */
+  margin-bottom: 2px;
+  text-transform: uppercase; /* Viết hoa nhãn */
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 14px; /* Chữ to hơn cho giá trị */
+  color: #1f2937; /* Màu đen cho giá trị */
+  font-weight: 600; /* In đậm giá trị */
+}
+
+.score-card-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Căn phải các mục action */
+  justify-content: center; /* Căn giữa theo chiều dọc */
+  min-width: 120px; /* Độ rộng tối thiểu cho phần action */
+  padding-left: 20px; /* Khoảng cách với phần info */
+}
+
+.score-value-main {
+  font-size: 22px; /* Chữ to cho điểm chính */
+  font-weight: 700; /* In đậm điểm chính */
+  color: #2563eb; /* Màu xanh cho điểm chính */
+  margin-bottom: 4px;
+}
+
+.edit-score-button {
+  background-color: transparent;
+  color: #2563eb; /* Màu xanh cho nút edit */
+  border: none;
+  border-radius: 6px;
+  padding: 5px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.edit-score-button:hover {
+  color: #1d4ed8; /* Màu xanh đậm hơn khi hover */
+  background-color: rgba(37, 99, 235, 0.1); /* Nền nhạt khi hover */
+}
+
+.edit-score-icon-placeholder {
+  font-size: 14px; /* Kích thước cho dấu + */
+  font-weight: bold;
+}
+
+.no-scores-message {
+  text-align: center;
+  color: #6b7280;
+  padding: 20px;
+  font-style: italic;
+}
+
+/* --- CSS CHO PHÂN TRANG (PAGINATION) --- */
+.pagination-controls {
+  display: flex;
+  justify-content: flex-end; /* Căn phải các nút phân trang */
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px 0;
+  gap: 10px;
+}
+
+.pagination-button {
+  background-color: #e5e7eb; /* Màu nền cho nút phân trang */
+  color: #374151; /* Màu chữ */
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background-color: #d1d5db; /* Màu nền đậm hơn khi hover */
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-button img { /* Nếu bạn dùng icon SVG cho nút */
+  width: 16px;
+  height: 16px;
+}
+
+.pagination-info {
+  font-size: 13px;
+  color: #4b5563;
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) { /* Điều chỉnh breakpoint nếu cần */
+  .controls-row {
+    flex-direction: column;
+    align-items: flex-start; /* Căn trái các nhóm khi xuống dòng */
+  }
+  .filter-container {
+    width: 100%; /* Cho filter chiếm hết chiều rộng */
+    justify-content: flex-start; /* Căn trái các item trong filter */
+  }
+  .sort-container {
+    width: 100%; /* Cho sort chiếm hết chiều rộng */
+    justify-content: flex-start; /* Căn trái các item trong sort */
+  }
+  .score-card-info {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Điều chỉnh cho màn hình nhỏ hơn */
+  }
+}
+
+@media (max-width: 500px) {
+  .score-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  .add-score-button {
+    width: 100%;
+    justify-content: center;
+  }
+  .filter-container, .sort-container {
+    gap: 6px; /* Giảm khoảng cách giữa các item trong filter/sort */
+  }
+  .filter-container > *, .sort-container > * { /* Các item con */
+    flex-grow: 1; /* Cho các item con có thể co giãn */
+    text-align: center;
+  }
+  .score-input {
+    width: auto; /* Cho input tự co giãn */
+    min-width: 50px;
+  }
+  .apply-button, .sort-button {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .score-card {
+    flex-direction: column; /* Cho các phần tử trong card xuống dòng */
+    padding: 12px;
+  }
+  .score-card-decorator {
+    width: 100%;
+    height: 4px;
+    margin-right: 0;
+    margin-bottom: 10px;
+    border-radius: 3px;
+  }
+  .score-card-info {
+    gap: 8px 15px;
+  }
+  .score-card-actions {
+    flex-direction: row; /* Action nằm ngang */
+    justify-content: space-between; /* Căn đều action */
+    align-items: center;
+    padding-left: 0;
+    margin-top: 10px;
+    width: 100%;
+  }
+  .score-value-main {
+    font-size: 20px;
+  }
+  .edit-score-button {
+    font-size: 11px;
+  }
+  .pagination-controls {
+    justify-content: center; /* Căn giữa phân trang trên mobile */
+    flex-wrap: wrap;
+  }
+  .pagination-info {
+    order: -1; /* Đưa thông tin trang lên trước trên mobile nếu cần */
+    width: 100%;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+}
