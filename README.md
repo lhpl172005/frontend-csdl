@@ -65,68 +65,6 @@ Hiện tại, ứng dụng bao gồm các trang quản lý sau:
 * **CSS3:** Để tạo kiểu cho ứng dụng (có thể bao gồm cả file CSS riêng cho từng component).
 * **SVG:** Sử dụng cho các icon.
 
-*(Bạn có thể thêm các thư viện khác nếu đã sử dụng, ví dụ: React Router cho việc điều hướng phức tạp hơn, hoặc một thư viện UI component).*
-
-## Cấu Trúc Thư Mục (Ví dụ)
-
-Dưới đây là một ví dụ về cấu trúc thư mục có thể có của dự án:
-
-
-frontend-csdl/
-├── public/
-│   └── ... (các file public)
-├── src/
-│   ├── asset/
-│   │   ├── image/
-│   │   │   ├── avatar/
-│   │   │   │   └── default-avatar.svg
-│   │   │   ├── header/
-│   │   │   │   ├── search-icon.svg
-│   │   │   │   ├── noti-icon.svg
-│   │   │   │   └── ...
-│   │   │   ├── sidebar/
-│   │   │   │   └── ...
-│   │   │   └── icons/
-│   │   │       └── close-icon.svg
-│   ├── components/
-│   │   ├── sidebar.jsx
-│   │   ├── sidebar.css
-│   │   ├── header.jsx
-│   │   ├── StudentIdDropdown.jsx  (Hoặc tên chung hơn như SearchFieldDropdown.jsx)
-│   │   ├── StudentIdDropdown.css
-│   │   ├── ScoreContent.jsx
-│   │   ├── ScoreContent.css
-│   │   ├── AddScoreModal.jsx
-│   │   ├── AddScoreModal.css
-│   │   ├── EditScoreModal.jsx
-│   │   ├── EditScoreModal.css
-│   │   ├── StudentContent.jsx
-│   │   ├── StudentContent.css
-│   │   ├── AddStudentModal.jsx
-│   │   ├── AddStudentModal.css
-│   │   ├── TeacherContent.jsx
-│   │   ├── TeacherContent.css
-│   │   ├── AddTeacherModal.jsx
-│   │   ├── AddTeacherModal.css
-│   │   ├── ClassContent.jsx
-│   │   ├── ClassContent.css
-│   │   ├── AddClassModal.jsx
-│   │   ├── AddClassModal.css
-│   │   ├── SubjectContent.jsx
-│   │   ├── SubjectContent.css
-│   │   ├── AddSubjectModal.jsx
-│   │   └── AddSubjectModal.css
-│   ├── App.jsx
-│   ├── App.css
-│   ├── style.css       (File CSS toàn cục)
-│   └── main.jsx        (Điểm vào của ứng dụng)
-├── .gitignore
-├── index.html
-├── package.json
-├── vite.config.js
-└── README.md
-
-
 ## Hướng Dẫn Cài Đặt và Chạy Dự Án
 
 1.  **Clone repository (nếu có):**
