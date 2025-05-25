@@ -1,67 +1,55 @@
 .student-id-box {
     position: relative; 
-    width: 146px; /* Kích thước yêu cầu */
+    width: 146px;
     padding: 0;
     display: flex;
     align-items: center;
   }
   .student-id-box .dropdown-toggle {
-    display: flex; /* Sắp xếp text và icon */
+    display: flex; 
     align-items: center;
-    justify-content: space-between; /* Đẩy text và icon ra 2 bên */
-    width: 100%; /* Chiếm hết chiều rộng box */
-    height: 100%; /* Chiếm hết chiều cao box */
+    justify-content: space-between; 
+    width: 100%; 
+    height: 100%; 
     background: none;
     border: none;
-    padding: 0 var(--base-padding); /* Padding ngang bên trong button */
+    padding: 0 var(--base-padding); 
     margin: 0;
     cursor: pointer;
-    text-align: left; /* Căn trái chữ */
+    text-align: left; 
     font-family: inherit;
     font-size: var(--font-size-base);
     border-radius: inherit;
   }
   .student-id-box .dropdown-text {
-    color: var(--text-color); /* <<< Màu chữ đen/tối theo yêu cầu */
-    font-weight: 630; /* Có thể chỉnh độ đậm nếu muốn */
-    white-space: nowrap; /* Không xuống dòng */
+    color: var(--text-color); 
+    font-weight: 630;
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis; /* Thêm ... nếu chữ quá dài */
-    flex-grow: 1; /* Cho phép text chiếm không gian */
-    padding-right: 5px; /* Khoảng cách nhỏ với icon */
+    text-overflow: ellipsis; 
+    flex-grow: 1;
+    padding-right: 5px; 
   }
   .student-id-box .dropdown-icon {
     width: 14px;
     height: 14px;
     opacity: 0.7;
   }
-  /* Style cho khung menu dropdown */
+
   .student-id-box .dropdown-menu {
-    position: absolute; /* Định vị tuyệt đối so với .student-id-box */
-    top: calc(100% + 6px); /* Xuất hiện ngay dưới nút bấm, cách 5px */
+    position: absolute; 
+    top: calc(100% + 6px); 
     left: 0;
     background-color: var(--white-color);
-    border-radius: var(--border-radius-large); /* Bo góc giống nút */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    border-radius: var(--border-radius-large); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
     border: 1px solid var(--border-color);
-    padding: 8px 0; /* Padding trên dưới cho menu */
+    padding: 8px 0; 
     margin: 0;
     list-style: none;
-    min-width: 100%; /* Chiều rộng tối thiểu bằng nút cha */
-    z-index: 10; /* Đảm bảo nằm trên các phần tử khác */
-  
-    /* --- Tạm thời hiển thị để xem style --- */
-    /* display: block; */ /* Bỏ comment dòng này nếu muốn ẩn ban đầu */
-    /* opacity: 1; */
-    /* visibility: visible; */
-    /* transform: translateY(0); */
-  
-    /* --- Style để ẩn menu ban đầu (Cần JS để kích hoạt) --- */
-    display: none; /* Hoặc dùng opacity/visibility/transform để có hiệu ứng */
-    /* opacity: 0; */
-    /* visibility: hidden; */
-    /* transform: translateY(-10px); */
-    /* transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease; */
+    min-width: 100%; 
+    z-index: 10; 
+    display: none;
   }
 
   .student-id-box.open .dropdown-menu {
@@ -71,29 +59,26 @@
     transform: translateY(0);
   }
   
-  /* Style cho từng mục trong dropdown */
   .student-id-box .dropdown-item {
     display: block;
     width: 100%;
-    padding: 8px var(--base-padding); /* Padding cho từng mục */
+    padding: 8px var(--base-padding);
     background: none;
     border: none;
     text-align: left;
     cursor: pointer;
-    color: var(--text-color); /* Màu chữ mặc định */
+    color: var(--text-color);
     font-size: var(--font-size-base);
     white-space: nowrap;
     transition: background-color 0.2s ease;
   }
   
-  /* Style khi hover vào mục */
   .student-id-box .dropdown-item:hover {
-    background-color: var(--light-gray-bg); /* Màu nền khi hover */
+    background-color: var(--light-gray-bg); 
   }
   
-  /* Style cho mục đang được chọn (active) */
   .student-id-box .dropdown-item.active {
-    background-color: var(--primary-color-light); /* Nền xanh nhạt */
-    color: var(--primary-color); /* Chữ màu xanh */
+    background-color: var(--primary-color-light);
+    color: var(--primary-color);
     font-weight: 500;
   }

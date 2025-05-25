@@ -1,46 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-/* src/components/ScoreContent.css */
 .score-content-container {
-  padding: 10px; /* Tăng padding cho thoáng hơn */
+  padding: 10px; 
   font-family: "Nunito Sans", sans-serif;
 }
 
-/* Dòng 1: Title và Button Add Score */
 .score-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px; /* Khoảng cách với dòng dưới */
+  margin-bottom: 10px; 
 }
 
 .score-title {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 28px; /* Kích thước chữ to hơn cho "Score" */
-  font-weight: 700; /* Đậm hơn */
-  color: #111827; /* Màu chữ tối hơn */
+  font-size: 28px;
+  font-weight: 700; 
+  color: #111827; 
   margin: 0;
 }
 
 .add-score-button {
-  background-color: #2563eb; /* Màu xanh dương chuẩn */
+  background-color: #2563eb; 
   color: white;
   border: none;
-  border-radius: 10px; /* Bo tròn góc */
-  padding: 8px 14px; /* Điều chỉnh padding */
+  border-radius: 10px; 
+  padding: 8px 14px; 
   font-family: "Nunito Sans", sans-serif;
-  font-size: 14px; /* Kích thước chữ */
-  font-weight: 700; /* Hơi đậm */
+  font-size: 14px; 
+  font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px; /* Khoảng cách giữa icon và text */
+  gap: 6px; 
   transition: background-color 0.2s ease-in-out, transform 0.1s ease;
 }
 
 .add-score-button:hover {
-  background-color: #1d4ed8; /* Màu xanh đậm hơn khi hover */
-  transform: translateY(-2px); /* Hiệu ứng nhấc nhẹ hơn */
+  background-color: #1d4ed8; 
+  transform: translateY(-2px); 
 }
 
 .add-score-button:active {
@@ -48,44 +46,40 @@
 }
 
 .add-score-icon {
-  width: 18px; /* Kích thước icon */
+  width: 18px; 
   height: 18px;
-  /* fill: white; */ /* SVG nên tự có màu trắng hoặc dùng currentColor */
 }
 
-
-/* Dòng 2: Filter và Sort */
 .controls-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
-  gap: 15px; /* Khoảng cách giữa Filter và Sort khi xuống dòng */
+  flex-wrap: wrap; 
+  gap: 15px; 
 }
 
-/* Phần Filter */
 .filter-container {
   display: flex;
   align-items: center;
   gap: 6px;
-  flex-wrap: wrap; /* Cho phép các item trong filter xuống dòng */
+  flex-wrap: wrap; 
 }
 
 .filter-label,
 .sort-label {
   font-family: "Nunito Sans", sans-serif;
-  font-weight: 700; /* Đậm vừa */
-  color: #2563eb; /* Màu xanh cho chữ "Filter:" và "Sort:" */
+  font-weight: 700; 
+  color: #2563eb; 
   font-size: 15px;
   margin-right: 4px;
 }
 
 .score-input {
   padding: 7px 10px;
-  border: 1px solid #d1d5db; /* Màu viền xám nhạt hơn */
+  border: 1px solid #d1d5db;
   border-radius: 8px;
-  width: 80px; /* Độ rộng của ô input score */
+  width: 80px; 
   font-family: "Nunito Sans", sans-serif;
   font-size: 14px;
   text-align: center;
@@ -94,7 +88,7 @@
 }
 
 .score-input::placeholder {
-  color: #9ca3af; /* Màu cho placeholder */
+  color: #9ca3af; 
 }
 
 .score-input:focus {
@@ -133,12 +127,11 @@
   transform: translateY(0);
 }
 
-/* Phần Sort */
 .sort-container {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap; /* Cho phép các nút sort xuống dòng */
+  flex-wrap: wrap; 
 }
 
 .sort-button {
@@ -162,45 +155,43 @@
 }
 
 .sort-button.original {
-  background-color: #e0f2fe; /* Light cyan */
-  color: #0891b2; /* Darker cyan */
+  background-color: #e0f2fe; 
+  color: #0891b2;
 }
 .sort-button.original:hover {
   background-color: #b9e8fa;
 }
 
 .sort-button.highest {
-  background-color: #e0e7ff; /* Light indigo */
-  color: #4f46e5; /* Darker indigo */
+  background-color: #e0e7ff; 
+  color: #4f46e5; 
 }
 .sort-button.highest:hover {
   background-color: #c7d2fe;
 }
 
 .sort-button.lowest {
-  background-color: #fce7f3; /* Light pink */
-  color: #db2777; /* Darker pink */
+  background-color: #fce7f3;
+  color: #db2777; 
 }
 .sort-button.lowest:hover {
   background-color: #fbcfe8;
 }
 
-/* --- CSS CHO THẺ ĐIỂM (SCORE CARD) --- */
 .score-list {
   display: flex;
   flex-direction: column;
-  gap: 12px; /* Khoảng cách giữa các thẻ điểm */
-  margin-bottom: 25px; /* Khoảng cách với phân trang */
+  gap: 12px; 
+  margin-bottom: 25px; 
 }
 
 .score-card {
   display: flex;
-  align-items: stretch; /* Cho decorator và content cao bằng nhau */
-  background-color: #ffffff; /* Màu nền nhạt như trong ảnh */
-  border-radius: 10px; /* Bo góc */
-  padding: 15px 20px; /* Padding bên trong thẻ */
+  align-items: stretch; 
+  background-color: #ffffff; 
+  border-radius: 10px;
+  padding: 15px 20px;
   border-left: 5px solid #4A90E2;
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); */ /* Bóng đổ nhẹ nếu muốn */
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 .score-card:hover {
@@ -208,17 +199,11 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.07);
 }
 
-/*.score-card-decorator {
-  width: 5px; 
-  background-color: #2563eb; 
-  border-radius: 3px 0 0 3px; 
-  margin-right: 15px; */
-
 .score-card-info {
-  flex-grow: 1; /* Cho phép phần thông tin chiếm không gian */
+  flex-grow: 1; 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Layout lưới cho thông tin */
-  gap: 10px 20px; /* Khoảng cách giữa các mục thông tin */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+  gap: 10px 20px; 
   align-items: center;
 }
 
@@ -229,40 +214,40 @@
 
 .info-label {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 11px; /* Chữ nhỏ hơn cho nhãn */
-  color: #6b7280; /* Màu xám cho nhãn */
+  font-size: 11px;
+  color: #6b7280; 
   margin-bottom: 2px;
-  text-transform: uppercase; /* Viết hoa nhãn */
+  text-transform: uppercase; 
   font-weight: 500;
 }
 
 .info-value {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 14px; /* Chữ to hơn cho giá trị */
-  color: #1f2937; /* Màu đen cho giá trị */
-  font-weight: 700; /* In đậm giá trị */
+  font-size: 14px; 
+  color: #1f2937; 
+  font-weight: 700; 
 }
 
 .score-card-actions {
   display: flex;
   flex-direction: column;
-  align-items: flex-end; /* Căn phải các mục action */
-  justify-content: center; /* Căn giữa theo chiều dọc */
-  min-width: 120px; /* Độ rộng tối thiểu cho phần action */
-  padding-left: 20px; /* Khoảng cách với phần info */
+  align-items: flex-end; 
+  justify-content: center; 
+  min-width: 120px; 
+  padding-left: 20px; 
 }
 
 .score-value-main {
   font-family: "Nunito Sans", sans-serif;
-  font-size: 24px; /* Chữ to cho điểm chính */
-  font-weight: 800; /* In đậm điểm chính */
-  color: #2563eb; /* Màu xanh cho điểm chính */
+  font-size: 24px; 
+  font-weight: 800;
+  color: #2563eb;
   margin-bottom: 2px;
 }
 
 .edit-score-button {
   background-color: transparent;
-  color: #2563eb; /* Màu xanh cho nút edit */
+  color: #2563eb; 
   border: none;
   border-radius: 6px;
   padding: 5px 8px;
@@ -277,12 +262,12 @@
 }
 
 .edit-score-button:hover {
-  color: #1d4ed8; /* Màu xanh đậm hơn khi hover */
-  background-color: rgba(37, 99, 235, 0.1); /* Nền nhạt khi hover */
+  color: #1d4ed8; 
+  background-color: rgba(37, 99, 235, 0.1); 
 }
 
 .edit-score-icon-placeholder {
-  font-size: 14px; /* Kích thước cho dấu + */
+  font-size: 14px; 
   font-weight: bold;
 }
 
@@ -294,10 +279,9 @@
   font-style: italic;
 }
 
-/* --- CSS CHO PHÂN TRANG (PAGINATION) --- */
 .pagination-controls {
   display: flex;
-  justify-content: flex-end; /* Căn phải các nút phân trang */
+  justify-content: flex-end;
   align-items: center;
   margin-top: 20px;
   padding: 10px 0;
@@ -305,8 +289,8 @@
 }
 
 .pagination-button {
-  background-color: #e5e7eb; /* Màu nền cho nút phân trang */
-  color: #374151; /* Màu chữ */
+  background-color: #e5e7eb; 
+  color: #374151;
   border: none;
   border-radius: 6px;
   padding: 8px 12px;
@@ -318,7 +302,7 @@
 }
 
 .pagination-button:hover:not(:disabled) {
-  background-color: #d1d5db; /* Màu nền đậm hơn khi hover */
+  background-color: #d1d5db;
 }
 
 .pagination-button:disabled {
@@ -326,7 +310,7 @@
   cursor: not-allowed;
 }
 
-.pagination-button img { /* Nếu bạn dùng icon SVG cho nút */
+.pagination-button img {
   width: 16px;
   height: 16px;
 }
@@ -338,22 +322,21 @@
   font-weight: 500;
 }
 
-/* Responsive adjustments */
-@media (max-width: 900px) { /* Điều chỉnh breakpoint nếu cần */
+@media (max-width: 900px) {
   .controls-row {
     flex-direction: column;
-    align-items: flex-start; /* Căn trái các nhóm khi xuống dòng */
+    align-items: flex-start; 
   }
   .filter-container {
-    width: 100%; /* Cho filter chiếm hết chiều rộng */
-    justify-content: flex-start; /* Căn trái các item trong filter */
+    width: 100%; 
+    justify-content: flex-start; 
   }
   .sort-container {
-    width: 100%; /* Cho sort chiếm hết chiều rộng */
-    justify-content: flex-start; /* Căn trái các item trong sort */
+    width: 100%; 
+    justify-content: flex-start; 
   }
   .score-card-info {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Điều chỉnh cho màn hình nhỏ hơn */
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
   }
 }
 
@@ -368,14 +351,14 @@
     justify-content: center;
   }
   .filter-container, .sort-container {
-    gap: 6px; /* Giảm khoảng cách giữa các item trong filter/sort */
+    gap: 6px; 
   }
-  .filter-container > *, .sort-container > * { /* Các item con */
-    flex-grow: 1; /* Cho các item con có thể co giãn */
+  .filter-container > *, .sort-container > * {
+    flex-grow: 1; 
     text-align: center;
   }
   .score-input {
-    width: auto; /* Cho input tự co giãn */
+    width: auto;
     min-width: 50px;
   }
   .apply-button, .sort-button {
@@ -383,7 +366,7 @@
     padding-right: 10px;
   }
   .score-card {
-    flex-direction: column; /* Cho các phần tử trong card xuống dòng */
+    flex-direction: column; 
     padding: 12px;
   }
   .score-card-decorator {
@@ -397,8 +380,8 @@
     gap: 8px 15px;
   }
   .score-card-actions {
-    flex-direction: row; /* Action nằm ngang */
-    justify-content: space-between; /* Căn đều action */
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     padding-left: 0;
     margin-top: 10px;
@@ -411,11 +394,11 @@
     font-size: 11px;
   }
   .pagination-controls {
-    justify-content: center; /* Căn giữa phân trang trên mobile */
+    justify-content: center;
     flex-wrap: wrap;
   }
   .pagination-info {
-    order: -1; /* Đưa thông tin trang lên trước trên mobile nếu cần */
+    order: -1;
     width: 100%;
     text-align: center;
     margin-bottom: 8px;

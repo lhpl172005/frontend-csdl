@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './StudentContent.css'; // File CSS riêng cho trang Student
+import './StudentContent.css'; 
 import AddStudentModal from './AddStudentModal';
-// Giả sử bạn có icon Plus và icon Avatar (điều chỉnh đường dẫn nếu cần)
 import PlusIcon from '../asset/image/top-section/plus.svg';
-import DefaultAvatarIcon from '../asset/image/avatar/default-avatar.svg'; // Icon avatar mặc định
+import DefaultAvatarIcon from '../asset/image/avatar/default-avatar.svg'; 
 
 // --- DỮ LIỆU MẪU CHO SINH VIÊN (TIẾNG ANH) ---
 const generateMockStudents = (count = 25) => {
   const mockStudents = [];
-  // NOTE: Thay đổi tên và chuyên ngành sang tiếng Anh
   const firstNames = ["Alice", "Bob", "Charlie", "David", "Eve", "Fiona", "George", "Hannah", "Ian", "Julia", "Kevin", "Linda", "Michael", "Nora", "Oscar"];
   const lastNames = ["Smith", "Jones", "Williams", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor", "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin"];
   const majors = [
@@ -23,24 +21,23 @@ const generateMockStudents = (count = 25) => {
   for (let i = 1; i <= count; i++) {
     let studentId;
     do {
-      // Giữ nguyên logic tạo Student ID nếu bạn muốn
       studentId = String(20230000 + Math.floor(Math.random() * 5000)).padStart(8, '0');
     } while (usedStudentIds.has(studentId));
     usedStudentIds.add(studentId);
 
     const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
     const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-    const fullName = `${firstName} ${lastName}`; // Đổi thứ tự cho tên tiếng Anh
+    const fullName = `${firstName} ${lastName}`; 
 
-    const year = 2002 + Math.floor(Math.random() * 5); // Sinh năm từ 2002 đến 2006
+    const year = 2002 + Math.floor(Math.random() * 5); 
     const month = String(Math.floor(Math.random() * 12) + 1).padStart(2, '0');
-    const day = String(Math.floor(Math.random() * 28) + 1).padStart(2, '0'); // Giả sử tối đa 28 ngày cho đơn giản
-    const dob = `${day}/${month}/${year}`; // Giữ định dạng DD/MM/YYYY
+    const day = String(Math.floor(Math.random() * 28) + 1).padStart(2, '0'); 
+    const dob = `${day}/${month}/${year}`; 
 
     const major = majors[Math.floor(Math.random() * majors.length)];
 
     mockStudents.push({
-      id: `student-${studentId}-${Date.now()}-${i}`, // ID duy nhất hơn
+      id: `student-${studentId}-${Date.now()}-${i}`, 
       avatar: DefaultAvatarIcon,
       studentId,
       fullName,

@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import './AddStudentModal.css'; // File CSS riêng hoặc dùng chung rồi đổi tên class
-import CloseIcon from '../asset/image/popup/x-icon.svg'; // Đường dẫn icon X của bạn
+import './AddStudentModal.css'; 
+import CloseIcon from '../asset/image/popup/x-icon.svg'; 
 
 function AddStudentModal({ isOpen, onClose, onAddStudent }) {
   // NOTE: State cho các trường thông tin sinh viên
   const [studentId, setStudentId] = useState('');
   const [fullName, setFullName] = useState('');
-  const [dob, setDob] = useState(''); // Sẽ cần input dạng date hoặc text với format DD/MM/YYYY
+  const [dob, setDob] = useState(''); 
   const [major, setMajor] = useState('');
-  // const [avatar, setAvatar] = useState(null); // Tạm thời chưa xử lý upload avatar
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -31,14 +30,12 @@ function AddStudentModal({ isOpen, onClose, onAddStudent }) {
       setError('All fields are required.');
       return;
     }
-    // TODO: Thêm validation cho định dạng Student ID, DOB nếu cần
 
     onAddStudent({
       studentId,
       fullName,
       dob,
       major,
-      // avatar: DefaultAvatarIcon, // Thêm avatar mặc định khi tạo mới
     });
   };
 
@@ -74,7 +71,7 @@ function AddStudentModal({ isOpen, onClose, onAddStudent }) {
           <div className="form-group">
             <label htmlFor="addDob">DOB</label>
             <input
-              type="text" // Hoặc type="date" rồi xử lý format
+              type="text"
               id="addDob"
               value={dob}
               onChange={(e) => setDob(e.target.value)}
@@ -91,7 +88,6 @@ function AddStudentModal({ isOpen, onClose, onAddStudent }) {
               required
             />
           </div>
-          {/* Phần upload Avatar có thể thêm sau */}
           <div className="modal-actions">
             <button type="submit" className="btn-add">
               Add

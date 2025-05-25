@@ -1,7 +1,5 @@
 import React from 'react';
 
-// Import các file SVG cho Sidebar
-// Đường dẫn tương đối từ components/sidebar.jsx đến asset/image/sidebar/
 import logoSvg from '../asset/image/sidebar/logo.svg';
 import scoreIcon from '../asset/image/sidebar/score-icon.svg';
 import studentIcon from '../asset/image/sidebar/student-icon-active.svg';
@@ -10,13 +8,9 @@ import subjectIcon from '../asset/image/sidebar/subject-icon-active.svg';
 import classIcon from '../asset/image/sidebar/class-icon-active.svg';
 import illustratorSvg from '../asset/image/sidebar/sidebar-illustrator.svg';
 import logoutIcon from '../asset/image/sidebar/logout.svg';
+import './sidebar.css'; 
 
-// Import file CSS riêng cho Sidebar (nếu có)
-import './sidebar.css'; // Đảm bảo file này tồn tại
-
-function Sidebar({ activePage, onNavigate }) { // Đổi tên thành Sidebar nếu muốn (PascalCase)
-  // const [activeItem, setActiveItem] = useState('Score');
-
+function Sidebar({ activePage, onNavigate }) { 
   const navItems = [
     { key: 'score', label: 'Score', iconSrc: scoreIcon },
     { key: 'student', label: 'Student', iconSrc: studentIcon },
@@ -26,12 +20,11 @@ function Sidebar({ activePage, onNavigate }) { // Đổi tên thành Sidebar n�
   ];
 
   const handleItemClick = (itemKey) => {
-    console.log('Sidebar item clicked:', itemKey); // Giữ lại để debug
+    console.log('Sidebar item clicked:', itemKey); 
     onNavigate(itemKey);
   };
 
   return (
-    // Lấy cấu trúc HTML từ file index.html gốc của bạn
     <aside className="sidebar">
       <div className="sidebar-header">
         <a href="#" className="logo">
@@ -52,7 +45,6 @@ function Sidebar({ activePage, onNavigate }) { // Đổi tên thành Sidebar n�
                   handleItemClick(item.key);
                 }}
               >
-                {/* Sử dụng biến icon đã import */}
                 <img src={item.iconSrc} alt="" className="nav-icon" />
                 <span>{item.label}</span>
               </a>
@@ -74,5 +66,4 @@ function Sidebar({ activePage, onNavigate }) { // Đổi tên thành Sidebar n�
   );
 }
 
-// Đổi tên export nếu bạn đổi tên function
-export default Sidebar; // Hoặc export default sidebar;
+export default Sidebar; 

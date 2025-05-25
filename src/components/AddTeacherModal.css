@@ -1,9 +1,3 @@
-/* src/components/AddTeacherModal.css */
-/* Copy toàn bộ nội dung từ AddStudentModal.css (ID: add_student_modal_css) */
-/* và chỉ cần đổi tên class .add-student-modal-content thành .add-teacher-modal-content */
-/* nếu bạn muốn style riêng biệt. */
-/* Nếu style giống hệt, bạn có thể dùng chung file CSS và class. */
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -24,14 +18,13 @@
   opacity: 1 !important;  
 }
 
-.modal-content.add-teacher-modal-content { /* Class riêng cho Add Teacher Modal */
+.modal-content.add-teacher-modal-content {
   background-color: white;
   padding: 25px 35px 30px 35px;
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   width: 100%;
-  max-width: 480px; /* Kích thước có thể khác AddStudentModal */
-  z-index: 1001;
+  max-width: 480px; 
   position: relative;
   opacity: 0;
   transform: scale(0.95);

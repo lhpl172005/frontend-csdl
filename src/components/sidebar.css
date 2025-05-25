@@ -1,4 +1,3 @@
-/* --- Sidebar Navigation Styles --- */
 .sidebar-nav {
     flex-grow: 1;
     margin-top: 5px;
@@ -7,7 +6,7 @@
   .sidebar-nav ul {
     display: flex;
     flex-direction: column;
-    gap: 5px; /* Giảm khoảng cách */
+    gap: 5px;
   }
 
 .sidebar-nav li a {
@@ -15,7 +14,7 @@
     align-items: center;
     padding: 10px var(--base-padding);
     border-radius: var(--border-radius-medium);
-    color: var(--secondary-color); /* Màu xám mặc định cho chữ và icon (nếu dùng currentColor) */
+    color: var(--secondary-color); 
     font-weight: 500;
     font-size: var(--font-size-nav);
     transition: background-color 0.2s ease, color 0.2s ease;
@@ -29,61 +28,51 @@
     width: var(--nav-icon-size);
     height: var(--nav-icon-size);
     flex-shrink: 0;
-    /* Mặc định làm xám icon (nếu dùng img/svg không đổi màu theo text) */
     filter: grayscale(80%) opacity(0.7);
     transition: filter 0.2s ease;
-    /* Nếu dùng SVG với fill="currentColor", dòng filter trên không cần thiết */
 }
 
-/* --- Trạng thái Active --- */
 .sidebar-nav li.active a {
-    background-color: var(--primary-color-light); /* Nền xanh nhạt */
-    color: var(--primary-color); /* Chữ màu xanh */
+    background-color: var(--primary-color-light); 
+    color: var(--primary-color); 
     font-weight: 700;
 }
 
-/* Thanh dọc màu xanh bên phải khi active */
 .sidebar-nav li.active a::after {
     content: '';
     position: absolute;
-    right: 0; /* Bên phải */
+    right: 0; 
     top: 50%;
     transform: translateY(-50%);
-    height: 60%; /* Chiều cao thanh */
-    width: var(--active-bar-width); /* Độ rộng thanh */
-    background-color: var(--primary-color); /* Màu xanh */
-    border-radius: 2px 0 0 2px; /* Bo góc */
+    height: 60%; 
+    width: var(--active-bar-width); 
+    background-color: var(--primary-color); 
+    border-radius: 2px 0 0 2px; 
 }
 
-/* Icon màu xanh khi active */
 .sidebar-nav li.active a .nav-icon {
-     filter: none; /* Bỏ filter để hiển thị màu gốc (hy vọng là xanh) */
-     /* Nếu dùng SVG với fill="currentColor", nó sẽ tự đổi màu theo color của thẻ <a> */
+     filter: none; 
 }
 
-/* --- Hiệu ứng Hover (cho các mục không active) --- */
+
 .sidebar-nav li:not(.active) a:hover {
     background-color: var(--primary-color-light);
     color: var(--primary-color);
 }
 .sidebar-nav li:not(.active) a:hover .nav-icon {
-    filter: none; /* Icon cũng sáng lên khi hover */
+    filter: none; 
 }
 
-/* Phần logout giữ nguyên như trước */
 .logout-link {
-    /* ... */
     color: var(--secondary-color);
 }
 .logout-link .nav-icon {
      filter: grayscale(80%) opacity(0.7);
-     /* ... */
 }
 .logout-link:hover {
      background-color: var(--logout-hover-bg);
      color: var(--logout-hover-text);
 }
 .logout-link:hover .nav-icon {
-     filter: none; /* Icon logout sáng lên khi hover */
-     /* Có thể đổi màu đỏ nếu muốn bằng filter phức tạp hơn hoặc SVG */
+     filter: none;
 }

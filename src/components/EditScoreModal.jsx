@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './EditScoreModal.css'; // File CSS riêng cho Modal
-import CloseIcon from '../asset/image/popup/x-icon.svg'; // Đường dẫn icon X của bạn
+import './EditScoreModal.css';
+import CloseIcon from '../asset/image/popup/x-icon.svg'; 
 
 function EditScoreModal({ isOpen, onClose, scoreData, onUpdateScore, onDeleteScore }) {
   // State cho các trường input, khởi tạo với dữ liệu hiện tại nếu có

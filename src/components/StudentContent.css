@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-/* src/components/StudentContent.css */
-/* Sử dụng lại nhiều style từ ScoreContent.css và điều chỉnh nếu cần */
-
 .student-content-container {
-  padding: 10px 10px; /* Tăng padding ngang */
-  font-family: 'Nunito Sans', sans-serif; /* Hoặc font bạn đã chọn */
-  min-height: calc(100vh - 64px); /* 64px là chiều cao header ví dụ */
+  padding: 10px 10px; 
+  font-family: 'Nunito Sans', sans-serif; 
+  min-height: calc(100vh - 64px); 
 }
 
 .student-header {
@@ -46,55 +43,46 @@
   height: 16px;
 }
 
-/* Thẻ Sinh Viên */
 .student-list {
   display: flex;
   flex-direction: column;
-  gap: 15px; /* Khoảng cách lớn hơn một chút giữa các thẻ */
+  gap: 15px;
   margin-bottom: 25px;
 }
 
 .student-card {
   display: flex;
-  align-items: center; /* Căn giữa avatar và info theo chiều dọc */
-  background-color: #ffffff; /* Nền trắng cho thẻ */
+  align-items: center; 
+  background-color: #ffffff;
   border-radius: 10px;
   padding: 18px 20px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07); /* Bóng đổ rõ hơn một chút */
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border-left: 5px solid #4A90E2; /* Màu accent khác cho Student */
+  border-left: 5px solid #4A90E2;
 }
 .student-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-/*.student-card-decorator { 
-  background-color: #4A90E2; 
-  width: 5px;
-  border-radius: 3px 0 0 3px;
-  align-self: stretch; 
-  margin-right: 15px; 
-}*/
-
 .student-card-avatar-section {
   margin-right: 20px;
-  flex-shrink: 0; /* Không cho avatar bị co lại */
+  flex-shrink: 0; 
 }
 
 .student-avatar {
-  width: 50px; /* Kích thước avatar lớn hơn */
+  width: 50px; 
   height: 50px;
   border-radius: 50%;
-  object-fit: cover; /* Đảm bảo ảnh avatar vừa vặn */
-  border: 2px solid #e0e0e0; /* Viền nhẹ cho avatar */
+  object-fit: cover; 
+  border: 2px solid #e0e0e0; 
 }
 
 .student-card-info {
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Layout lưới cho thông tin */
-  gap: 10px 20px; /* Khoảng cách giữa các mục thông tin */
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
+  gap: 10px 20px; 
   align-items: center;
 }
 
@@ -118,17 +106,16 @@
 }
 
 .student-name-value {
-    font-size: 15px; /* Tên to hơn một chút */
+    font-size: 15px; 
     font-weight: 600;
-    color: #000000; /* Màu khác cho tên nếu muốn */
+    color: #000000;
 }
 .student-id-value, .student-major-value, .student-dob-value {
-    font-size: 15px; /* Tên to hơn một chút */
+    font-size: 15px; 
     font-weight: 600;
-    color: #000000; /* Màu khác cho tên nếu muốn */
+    color: #000000; 
 }
 
-/* Pagination và No items message (có thể copy từ ScoreContent.css) */
 .no-items-message {
   text-align: center;
   color: #6b7280;
@@ -151,7 +138,7 @@
   color: #374151;
   border: none;
   border-radius: 6px;
-  padding: 8px 14px; /* Tăng padding một chút */
+  padding: 8px 14px; 
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -165,12 +152,11 @@
   cursor: not-allowed;
 }
 .pagination-info {
-  font-size: 14px; /* Tăng font một chút */
+  font-size: 14px; 
   color: #4b5563;
   font-weight: 500;
 }
 
-/* Responsive adjustments (tương tự ScoreContent.css) */
 @media (max-width: 768px) {
   .student-card {
     flex-direction: column;
@@ -185,18 +171,18 @@
   }
   .student-card-avatar-section {
       margin-bottom: 15px;
-      align-self: center; /* Căn giữa avatar trên mobile */
+      align-self: center;
   }
   .student-card-info {
-    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    width: 100%;
   }
   .info-row {
-      grid-template-columns: 1fr; /* 1 cột trên mobile */
+      grid-template-columns: 1fr; 
       gap: 10px;
   }
   .student-card-actions {
     flex-direction: row;
-    justify-content: flex-end; /* Nút edit về cuối */
+    justify-content: flex-end; 
     align-items: center;
     padding-left: 0;
     margin-top: 15px;

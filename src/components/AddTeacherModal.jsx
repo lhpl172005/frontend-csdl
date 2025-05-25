@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './AddTeacherModal.css'; // Sẽ tạo file CSS này
+import './AddTeacherModal.css'; 
 import CloseIcon from '../asset/image/popup/x-icon.svg';
 
 function AddTeacherModal({ isOpen, onClose, onAddTeacher }) {
@@ -25,7 +25,6 @@ function AddTeacherModal({ isOpen, onClose, onAddTeacher }) {
       setError('All fields are required.');
       return;
     }
-    // TODO: Thêm validation cho Teacher ID nếu cần
     onAddTeacher({ teacherId, fullName });
   };
 

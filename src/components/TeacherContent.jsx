@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './TeacherContent.css'; // Sẽ tạo file CSS này
+import './TeacherContent.css'; 
 import PlusIcon from '../asset/image/top-section/plus.svg';
-import DefaultAvatarIcon from '../asset/image/avatar/default-avatar.svg'; // Dùng chung avatar
-// NOTE: Import AddTeacherModal (sẽ tạo ở bước 3)
+import DefaultAvatarIcon from '../asset/image/avatar/default-avatar.svg'; 
 import AddTeacherModal from './AddTeacherModal.jsx';
 
 // --- DỮ LIỆU MẪU CHO GIÁO VIÊN ---
@@ -35,9 +34,9 @@ const generateMockTeachers = (count = 20) => {
 };
 
 // --- COMPONENT THẺ GIÁO VIÊN ---
-const TeacherCard = ({ teacherData /*, onEdit */ }) => { // Bỏ onEdit nếu chưa cần
+const TeacherCard = ({ teacherData }) => { 
   return (
-    <div className="teacher-card"> {/* Tương tự student-card */}
+    <div className="teacher-card"> 
       <div className="teacher-card-decorator"></div>
       <div className="teacher-card-avatar-section">
         <img src={teacherData.avatar} alt={`${teacherData.fullName}'s Avatar`} className="teacher-avatar" />
@@ -52,13 +51,6 @@ const TeacherCard = ({ teacherData /*, onEdit */ }) => { // Bỏ onEdit nếu ch
             <span className="info-value teacher-id-value">{teacherData.teacherId}</span>
         </div>
       </div>
-      {/* Tạm thời không có nút Edit cho Teacher */}
-      {/* <div className="teacher-card-actions">
-        <button className="edit-teacher-button" onClick={() => onEdit && onEdit(teacherData)}>
-          <span className="edit-icon-placeholder">+</span>
-          Edit Teacher
-        </button>
-      </div> */}
     </div>
   );
 };
@@ -107,7 +99,7 @@ const TeacherContent = ({ searchTerm, searchField }) => {
   // NOTE: Hàm xử lý khi thêm giáo viên mới
   const handleAddTeacherSubmit = (newTeacherData) => {
     const newTeacherEntry = {
-      ...newTeacherData, // teacherId, fullName từ form
+      ...newTeacherData, 
       id: `teacher-${newTeacherData.teacherId}-${Date.now()}`,
       avatar: DefaultAvatarIcon,
     };
@@ -135,7 +127,6 @@ const TeacherContent = ({ searchTerm, searchField }) => {
             <TeacherCard
               key={teacher.id}
               teacherData={teacher}
-              // onEdit={handleOpenEditModal} // Sẽ dùng sau nếu có Edit Teacher
             />
           ))
         ) : (

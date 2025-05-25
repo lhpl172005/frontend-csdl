@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './AddSubjectModal.css'; // Sẽ tạo file CSS này
+import './AddSubjectModal.css'; 
 import CloseIcon from '../asset/image/popup/x-icon.svg';
 
 function AddSubjectModal({ isOpen, onClose, onAddSubject }) {
@@ -25,7 +25,6 @@ function AddSubjectModal({ isOpen, onClose, onAddSubject }) {
       setError('All fields are required.');
       return;
     }
-    // TODO: Thêm validation cho Subject ID nếu cần
     onAddSubject({ subjectName, subjectId });
   };
 
@@ -49,7 +48,7 @@ function AddSubjectModal({ isOpen, onClose, onAddSubject }) {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="addSubjectId_subject">Subject ID</label> {/* Thêm _subject để tránh trùng ID */}
+            <label htmlFor="addSubjectId_subject">Subject ID</label>
             <input
               type="text"
               id="addSubjectId_subject"

@@ -1,6 +1,3 @@
-/* src/components/ClassContent.css */
-/* Tương tự StudentContent.css/TeacherContent.css, chỉ đổi tên class nếu cần */
-
 .class-content-container {
   padding: 10px 10px;
   font-family: 'Nunito Sans', sans-serif;
@@ -21,7 +18,7 @@
 }
 
 .add-class-button {
-  background-color: #2563eb; /* Hoặc một màu khác cho Class nếu muốn */
+  background-color: #2563eb;
   color: white;
   border: none;
   border-radius: 10px;
@@ -57,10 +54,10 @@
   align-items: center;
   background-color: #ffffff;
   border-radius: 8px;
-  padding: 18px 20px; /* Tăng padding một chút */
+  padding: 18px 20px; 
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border-left: 4px solid #4A90E2; /* Ví dụ: màu vàng cam cho Class */
+  border-left: 4px solid #4A90E2; 
 }
 .class-card:hover {
   transform: translateY(-2px);
@@ -71,14 +68,14 @@
   flex-grow: 1;
   display: flex;
   align-items: center;
-  gap: 30px; /* Khoảng cách giữa các trường thông tin */
+  gap: 30px; 
 }
 
-.info-group { /* Style chung cho info-group */
+.info-group { 
   display: flex;
   flex-direction: column;
 }
-/* Điều chỉnh flex-basis cho phù hợp với độ dài dự kiến của ID */
+
 .class-id-group { flex-basis: 180px; }
 .subject-id-group { flex-basis: 180px; }
 .teacher-id-group-class { flex-basis: 150px; }
@@ -101,13 +98,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.class-id-value { /* Style riêng nếu muốn */
-    color: #000000; /* Ví dụ màu vàng cam */
+.class-id-value { 
+    color: #000000; 
 }
 
-/* Bỏ class-card-actions và edit-class-button nếu không dùng */
-
-/* Pagination và No items message (giữ nguyên style) */
 .no-items-message {
   text-align: center;
   color: #6b7280;
@@ -147,7 +141,6 @@
   font-weight: 500;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .class-card {
     flex-direction: column;

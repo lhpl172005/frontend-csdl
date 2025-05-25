@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './SubjectContent.css'; // Sẽ tạo file CSS này
+import './SubjectContent.css';
 import PlusIcon from '../asset/image/top-section/plus.svg';
-// NOTE: Import AddSubjectModal (sẽ tạo ở bước 3)
 import AddSubjectModal from './AddSubjectModal';
 
 // --- DỮ LIỆU MẪU CHO MÔN HỌC ---
@@ -39,13 +38,10 @@ const generateMockSubjects = (count = 25) => {
 const SubjectCard = ({ subjectData }) => {
   return (
     <div className="subject-card">
-      {/* Không cần decorator nếu thiết kế đơn giản hơn */}
-      {/* <div className="subject-card-decorator"></div> */}
       <div className="subject-card-info">
         <span className="subject-name-main">{subjectData.subjectName}</span>
         <span className="subject-id-sub">Subject ID: {subjectData.subjectId}</span>
       </div>
-      {/* Không có nút Edit cho Subject theo yêu cầu */}
     </div>
   );
 };
@@ -55,12 +51,12 @@ const SubjectContent = ({ searchTerm, searchField }) => {
   const [allSubjects, setAllSubjects] = useState([]);
   const [filteredSubjects, setFilteredSubjects] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10; // 10 thẻ trên 1 trang (sẽ là 5 hàng x 2 cột)
+  const itemsPerPage = 10;
 
   const [isAddSubjectModalOpen, setIsAddSubjectModalOpen] = useState(false);
 
   useEffect(() => {
-    const generatedSubjects = generateMockSubjects(25); // Tạo 25 môn học
+    const generatedSubjects = generateMockSubjects(25); 
     setAllSubjects(generatedSubjects);
   }, []);
 
@@ -70,7 +66,6 @@ const SubjectContent = ({ searchTerm, searchField }) => {
         const term = searchTerm.toLowerCase();
         subjectsToProcess = subjectsToProcess.filter(subject => {
             const fieldValue = subject[searchField] ? String(subject[searchField]).toLowerCase() : '';
-            // Cho phép tìm kiếm cả trong subjectName và subjectId nếu searchField là 'subjectName' (hoặc 'subject')
             if (searchField === 'subjectName' || searchField === 'subject') {
                  return subject.subjectName.toLowerCase().includes(term) || subject.subjectId.toLowerCase().includes(term);
             }
@@ -96,7 +91,7 @@ const SubjectContent = ({ searchTerm, searchField }) => {
 
   const handleAddSubjectSubmit = (newSubjectData) => {
     const newSubjectEntry = {
-      ...newSubjectData, // subjectName, subjectId từ form
+      ...newSubjectData,
       id: `subject-${newSubjectData.subjectId}-${Date.now()}`,
     };
     setAllSubjects(prevSubjects => [newSubjectEntry, ...prevSubjects]);
@@ -116,8 +111,6 @@ const SubjectContent = ({ searchTerm, searchField }) => {
           Add Subject
         </button>
       </div>
-
-      {/* Danh sách thẻ môn học - sẽ được style 2 cột */}
       <div className="subject-list">
         {currentItemsToDisplay.length > 0 ? (
           currentItemsToDisplay.map((subject) => (

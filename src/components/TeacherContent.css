@@ -1,6 +1,3 @@
-/* src/components/TeacherContent.css */
-/* Tương tự StudentContent.css, chỉ đổi tên class nếu cần */
-
 .teacher-content-container {
   padding: 10px 10px;
   font-family: 'Nunito Sans', sans-serif;
@@ -21,7 +18,7 @@
 }
 
 .add-teacher-button {
-  background-color: #2563eb; /* Hoặc một màu khác cho Teacher nếu muốn */
+  background-color: #2563eb; 
   color: white;
   border: none;
   border-radius: 10px;
@@ -44,7 +41,6 @@
   height: 16px;
 }
 
-/* Thẻ Giáo Viên */
 .teacher-list {
   display: flex;
   flex-direction: column;
@@ -60,7 +56,7 @@
   padding: 15px 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  border-left: 4px solid #4A90E2; /* Ví dụ: màu xanh lá cho Teacher */
+  border-left: 4px solid #4A90E2; 
 }
 .teacher-card:hover {
   transform: translateY(-2px);
@@ -84,14 +80,14 @@
   flex-grow: 1;
   display: flex;
   align-items: center;
-  gap: 25px; /* Tăng khoảng cách giữa Full Name và Teacher ID */
+  gap: 25px; 
 }
 
-.info-group { /* Style chung cho info-group */
+.info-group {
   display: flex;
   flex-direction: column;
 }
-.teacher-name-group { flex-basis: 250px; /* Tên giáo viên có thể dài */ }
+.teacher-name-group { flex-basis: 250px; }
 .teacher-id-group { flex-basis: 150px; }
 
 
@@ -114,12 +110,9 @@
 }
 .teacher-name-value {
     font-size: 14px;
-    color: #000000; /* Ví dụ: màu xanh lá cho tên Teacher */
+    color: #000000;
 }
 
-/* Bỏ teacher-card-actions và edit-teacher-button nếu không dùng */
-
-/* Pagination và No items message (giữ nguyên style từ StudentContent.css) */
 .no-items-message {
   text-align: center;
   color: #6b7280;
@@ -159,7 +152,6 @@
   font-weight: 500;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .teacher-card {
     flex-direction: column;

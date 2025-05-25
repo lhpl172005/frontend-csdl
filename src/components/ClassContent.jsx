@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './ClassContent.css'; // Sẽ tạo file CSS này
+import './ClassContent.css';
 import PlusIcon from '../asset/image/top-section/plus.svg';
-// NOTE: Import AddClassModal (sẽ tạo ở bước 3)
 import AddClassModal from './AddClassModal';
 
 // --- DỮ LIỆU MẪU CHO LỚP HỌC ---
@@ -36,8 +35,8 @@ const generateMockClasses = (count = 20) => {
 // --- COMPONENT THẺ LỚP HỌC ---
 const ClassCard = ({ classData /*, onEdit */ }) => {
   return (
-    <div className="class-card"> {/* Tương tự student-card/teacher-card */}
-      <div className="class-card-decorator"></div> {/* Thanh trang trí */}
+    <div className="class-card"> 
+      <div className="class-card-decorator"></div> 
       {/* Không có avatar cho Class */}
       <div className="class-card-info">
         <div className="info-group class-id-group">
@@ -53,13 +52,6 @@ const ClassCard = ({ classData /*, onEdit */ }) => {
             <span className="info-value teacher-id-value-class">{classData.teacherId}</span>
         </div>
       </div>
-      {/* Tạm thời không có nút Edit cho Class */}
-      {/* <div className="class-card-actions">
-        <button className="edit-class-button" onClick={() => onEdit && onEdit(classData)}>
-          <span className="edit-icon-placeholder">+</span>
-          Edit Class
-        </button>
-      </div> */}
     </div>
   );
 };
@@ -83,7 +75,7 @@ const ClassContent = ({ searchTerm, searchField }) => {
     let classesToProcess = [...allClasses];
     if (searchTerm && searchField && classesToProcess.length > 0) {
         const term = searchTerm.toLowerCase();
-        classesToProcess = classesToProcess.filter(cls => { // Đổi tên biến thành 'cls' cho rõ ràng
+        classesToProcess = classesToProcess.filter(cls => { 
             const fieldValue = cls[searchField] ? String(cls[searchField]).toLowerCase() : '';
             return fieldValue.includes(term);
         });
@@ -108,7 +100,7 @@ const ClassContent = ({ searchTerm, searchField }) => {
   // NOTE: Hàm xử lý khi thêm lớp học mới
   const handleAddClassSubmit = (newClassData) => {
     const newClassEntry = {
-      ...newClassData, // classId, subjectId, teacherId từ form
+      ...newClassData, 
       id: `class-${newClassData.classId}-${Date.now()}`,
     };
     setAllClasses(prevClasses => [newClassEntry, ...prevClasses]);
@@ -131,11 +123,10 @@ const ClassContent = ({ searchTerm, searchField }) => {
 
       <div className="class-list">
         {currentItemsToDisplay.length > 0 ? (
-          currentItemsToDisplay.map((cls) => ( // Đổi tên biến thành 'cls'
+          currentItemsToDisplay.map((cls) => ( 
             <ClassCard
               key={cls.id}
               classData={cls}
-              // onEdit={handleOpenEditModal} // Sẽ dùng sau nếu có Edit Class
             />
           ))
         ) : (

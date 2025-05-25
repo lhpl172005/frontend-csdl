@@ -3,25 +3,16 @@ import React, { useState } from 'react';
 import './style.css';
 import Sidebar from './components/sidebar';
 import Header from './components/header';
-import ScoreContent from './components/ScoreContent'; // Đường dẫn tới file của bạn
+import ScoreContent from './components/ScoreContent';
 import StudentContent from './components/StudentContent';
 import TeacherContent from './components/TeacherContent';
 import ClassContent from './components/ClassContent';
 import SubjectContent from './components/SubjectContent';
 
-// Các component cho các trang khác (tạm thời là placeholder)
-// const StudentContent = () => <div style={{padding: '20px'}}>Student Page Content - Coming Soon!</div>;
-// const TeacherContent = () => <div style={{padding: '20px'}}>Teacher Page Content - Coming Soon!</div>;
-// const SubjectContent = () => <div style={{padding: '20px'}}>Subject Page Content - Coming Soon!</div>;
-// const ClassContent = () => <div style={{padding: '20px'}}>Class Page Content - Coming Soon!</div>;
-
 function App() {
-// NOTE: State để lưu trữ từ khóa tìm kiếm và trường tìm kiếm
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchField, setSearchField] = useState(''); // Hoặc một giá trị placeholder khác
-
-  // NOTE: State mới để quản lý trang đang hiển thị
-  const [activePage, setActivePage] = useState('score'); // Mặc định là trang 'score'
+  const [searchField, setSearchField] = useState(''); 
+  const [activePage, setActivePage] = useState('score'); 
 
   // NOTE: Hàm để Header cập nhật searchTerm
   const handleSearchTermChange = (newTerm) => {
@@ -31,8 +22,6 @@ function App() {
   // NOTE: Hàm để Header (thông qua StudentIdDropdown) cập nhật searchField
   const handleSearchFieldChange = (newField) => {
     setSearchField(newField);
-    // Tùy chọn: Bạn có thể muốn reset searchTerm khi người dùng đổi trường tìm kiếm
-    // Ví dụ: setSearchTerm('');
   }
   
     // NOTE: Hàm để Sidebar gọi khi một mục được chọn
@@ -43,21 +32,18 @@ function App() {
 
     // NOTE: Cập nhật searchField dựa trên trang được chọn
     if (page === 'score') {
-      setSearchField('studentId'); // Mặc định cho trang Score
+      setSearchField('studentId'); 
     } else if (page === 'student') {
-      setSearchField('fullName'); // Mặc định tìm theo tên cho trang Student, hoặc 'studentId' tùy bạn
-    } else if (page === 'teacher') { // NOTE: Thêm case cho teacher
-      setSearchField('fullName'); // Mặc định tìm theo tên cho trang Teacher
+      setSearchField('fullName'); 
+    } else if (page === 'teacher') { 
+      setSearchField('fullName'); 
     } else if (page === 'subject') {
       setSearchField('subjectName');
     } else if (page === 'class') {
       setSearchField('classId');
     } else {
-      setSearchField(''); // Hoặc một giá trị mặc định chung cho các trang khác
+      setSearchField('');
     }
-    // Khi chuyển trang, có thể bạn muốn reset searchTerm và searchField
-    // setSearchTerm('');
-    // setSearchField('studentId'); // Hoặc một giá trị mặc định phù hợp cho trang mới
   };
 
   // NOTE: Hàm render nội dung chính dựa trên activePage
@@ -70,11 +56,11 @@ function App() {
       case 'teacher':
         return <TeacherContent searchTerm={searchTerm} searchField={searchField} />;
       case 'subject':
-        return <SubjectContent searchTerm={searchTerm} searchField={searchField}/>; // Tạm thời chưa có gì
+        return <SubjectContent searchTerm={searchTerm} searchField={searchField}/>; 
       case 'class':
-        return <ClassContent searchTerm={searchTerm} searchField={searchField}/>; // Tạm thời chưa có gì
+        return <ClassContent searchTerm={searchTerm} searchField={searchField}/>; 
       default:
-        return <ScoreContent searchTerm={searchTerm} searchField={searchField} />; // Mặc định về trang Score
+        return <ScoreContent searchTerm={searchTerm} searchField={searchField} />;
     }
   };
 
@@ -85,20 +71,16 @@ function App() {
       <div className="main-content-wrapper">
         <Header
           searchTerm={searchTerm}
-          searchField={searchField} // Sẽ được dùng làm initialValue cho StudentIdDropdown
+          searchField={searchField} 
           onSearchChange={handleSearchTermChange}
-          onSearchFieldChange={handleSearchFieldChange} // Sẽ được StudentIdDropdown gọi
-          activePage={activePage} // Truyền activePage để Header có thể thay đổi dropdown sau
+          onSearchFieldChange={handleSearchFieldChange} 
+          activePage={activePage} 
         />
-
-        {/* NOTE: THAY THẾ ĐOẠN CODE CŨ CỦA BẠN BẰNG DÒNG NÀY */}
         <main className="content-wrapper">
           {renderMainContent()}
         </main>
-        {/* Kết thúc main-content-wrapper đã được chuyển ra ngoài nếu bạn có div bao quanh */}
-      </div> {/* Kết thúc main-content-wrapper */}
-
-    </div> /* Kết thúc dashboard-layout */
+      </div>
+    </div>
   );
 }
 

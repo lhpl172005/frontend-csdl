@@ -20,14 +20,13 @@
   opacity: 1 !important;  
 }
 
-/* Đổi tên class nếu bạn muốn style riêng cho AddStudentModal */
 .modal-content.add-student-modal-content { 
   background-color: white;
   padding: 35px 40px 30px 40px;
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   width: 100%;
-  max-width: 500px; /* Hoặc kích thước bạn muốn cho Add Student */
+  max-width: 500px;
   z-index: 1001;
   position: relative;
   opacity: 0;
@@ -83,7 +82,7 @@
   text-align: center;
 }
 .form-group {
-  margin-bottom: 18px; /* Giảm khoảng cách một chút */
+  margin-bottom: 18px; 
 }
 .form-group label {
   display: block;
@@ -93,9 +92,9 @@
   color: #454f5b;
 }
 .form-group input[type="text"],
-.form-group input[type="number"] { /* Áp dụng cho cả input DOB nếu là text */
+.form-group input[type="number"] { 
   width: 100%;
-  padding: 12px; /* Điều chỉnh padding input */
+  padding: 12px; 
   border: 1px solid #dfe3e8;
   border-radius: 10px;
   font-family: "Nunito Sans", sans-serif;
@@ -111,14 +110,14 @@
   display: flex;
   justify-content: flex-end;
   gap: 12px;
-  margin-top: 25px; /* Giảm margin top một chút */
+  margin-top: 25px; 
   margin-right: 0;
   margin-bottom: 3px;
 }
 .modal-actions .btn-add {
-  background-color: #2563eb; /* Giữ màu xanh này */
+  background-color: #2563eb; 
   color: white;
-  padding: 12px 22px; /* Điều chỉnh padding nút */
+  padding: 12px 22px; 
   border: none;
   border-radius: 10px;
   font-size: 14px;

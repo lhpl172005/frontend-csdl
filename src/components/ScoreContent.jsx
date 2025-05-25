@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'; // THÊM useState, useEffect
+import React, { useState, useEffect } from 'react';
+
 import './ScoreContent.css';
-// Đường dẫn này bạn giữ nguyên nếu đúng với cấu trúc thư mục của bạn
 import PlusIcon from '../asset/image/top-section/plus.svg';
-import AddScoreModal from './AddScoreModal'; // Import modal mới
+import AddScoreModal from './AddScoreModal'; 
 import EditScoreModal from './EditScoreModal';
 
 // --- DỮ LIỆU MẪU ---
@@ -15,7 +15,7 @@ const generateMockScores = (count = 25) => {
     const studentId = String(1000 + i).padStart(4, '0');
     const subjectId = subjects[Math.floor(Math.random() * subjects.length)];
     const classId = classPrefixes[Math.floor(Math.random() * classPrefixes.length)] + String(Math.floor(Math.random() * 900) + 100).padStart(3,'0');
-    const score = parseFloat((Math.random() * 6 + 4).toFixed(2)); // Điểm từ 4.00 đến 10.00
+    const score = parseFloat((Math.random() * 6 + 4).toFixed(2)); 
 
     mockScores.push({
       id: `score-${i}`,
@@ -59,7 +59,6 @@ const ScoreCard = ({ scoreData, onEdit }) => {
             console.log('[ScoreCard] Edit button clicked, calling onEdit with:', scoreData); // DEBUG
             onEdit(scoreData);
           }}>
-          {/* <img src={EditIcon} alt="Edit" className="edit-score-icon" /> */}
           <span className="edit-score-icon-placeholder">+</span>
           Edit Score
         </button>
@@ -172,17 +171,14 @@ const ScoreContent = ({searchTerm, searchField}) => {
       id: `score-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`, // Tạo ID duy nhất hơn
     };
     setAllScores(prevScores => [...prevScores, newScoreEntry]);
-    setIsAddScoreModalOpen(false); // Đóng modal sau khi thêm
-    // Tùy chọn: Chuyển đến trang cuối cùng để xem mục mới thêm
-    // const newTotalPages = Math.ceil((allScores.length + 1) / scoresPerPage);
-    // setCurrentPage(newTotalPages);
+    setIsAddScoreModalOpen(false); 
   };
 
   // NOTE: 4. Thêm Hàm Xử Lý cho Edit Modal
   const handleOpenEditModal = (scoreToEdit) => {
     console.log('[ScoreContent] handleOpenEditModal called. Current isAddScoreModalOpen:', isAddScoreModalOpen, 'Current isEditScoreModalOpen:', isEditScoreModalOpen);
     console.log('[ScoreContent] handleOpenEditModal - scoreToEdit:', scoreToEdit);
-    setIsAddScoreModalOpen(false); // << THÊM DÒNG NÀY: Đóng Add modal (nếu đang mở)
+    setIsAddScoreModalOpen(false); 
     setEditingScore(scoreToEdit);
     setIsEditScoreModalOpen(true);
     console.log('[ScoreContent] Set isEditScoreModalOpen to true, isAddScoreModalOpen to false.');
@@ -209,14 +205,6 @@ const ScoreContent = ({searchTerm, searchField}) => {
   };
 
   const handleApplyFilter = () => {
-    // useEffect sẽ tự động xử lý filter và sort khi scoreFrom, scoreTo, currentSort thay đổi.
-    // Nút Apply có thể không cần thiết nếu bạn muốn filter "live".
-    // Tuy nhiên, nếu bạn muốn chỉ filter khi nhấn Apply, bạn sẽ cần điều chỉnh logic trong useEffect
-    // hoặc di chuyển logic filter/sort vào đây và gọi setFilteredScores.
-    // Hiện tại, useEffect đã bao gồm logic này, nên hàm này có thể để trống hoặc
-    // dùng để set lại state nào đó nếu cần trigger useEffect một cách có chủ đích.
-    // Để đơn giản, ta có thể coi như useEffect đã xử lý.
-    // Nếu bạn muốn nút Apply thực sự trigger, bạn có thể gọi lại logic filter/sort ở đây:
     let scoresToProcess = [...allScores];
     if (scoreFrom !== '' || scoreTo !== '') {
       const from = scoreFrom === '' ? -Infinity : parseFloat(scoreFrom);
@@ -246,8 +234,8 @@ const ScoreContent = ({searchTerm, searchField}) => {
           className="add-score-button"
           onClick={() => {
             console.log('[ScoreContent] Add Score button clicked. Current isAddScoreModalOpen:', isAddScoreModalOpen);
-            setIsEditScoreModalOpen(false); // << THÊM DÒNG NÀY: Đóng Edit modal (nếu đang mở)
-            setEditingScore(null);      // << THÊM DÒNG NÀY: Reset editingScore
+            setIsEditScoreModalOpen(false);
+            setEditingScore(null);     
             setIsAddScoreModalOpen(true);
             console.log('[ScoreContent] Set isAddScoreModalOpen to true.');
           }}
@@ -350,4 +338,4 @@ const ScoreContent = ({searchTerm, searchField}) => {
   );
 };
 
-export default ScoreContent; // XÓA dấu } thừa ở đây
+export default ScoreContent; 
