@@ -2,6 +2,8 @@
 
 Đây là một ứng dụng frontend được xây dựng bằng React và Vite, dùng để quản lý thông tin điểm, sinh viên, giáo viên, lớp học và môn học.
 
+Link giao diện: https://d005-2402-800-61cf-bf4b-e057-7f50-9330-65a1.ngrok-free.app/
+
 ## Mục Lục
 
 - [Tổng Quan](#tổng-quan)
