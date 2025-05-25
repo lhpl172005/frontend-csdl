@@ -32,6 +32,12 @@ function Header({ searchTerm, searchField, onSearchChange, onSearchFieldChange, 
     { value: 'teacherId', label: 'Teacher ID' },
   ];
 
+  const classSearchOptions = [
+    { value: 'classId', label: 'Class ID' },
+    { value: 'subjectId', label: 'Subject ID' },
+    { value: 'teacherId', label: 'Teacher ID'},
+  ];
+
   // Chọn options dựa trên activePage
   let currentSearchOptions;
   if (activePage === 'student') {
@@ -40,6 +46,8 @@ function Header({ searchTerm, searchField, onSearchChange, onSearchFieldChange, 
     currentSearchOptions = scoreSearchOptions;
   } else if (activePage === 'teacher') { 
     currentSearchOptions = teacherSearchOptions;
+  } else if (activePage === 'class') {
+    currentSearchOptions = classSearchOptions;
   } else {
     // Mặc định hoặc cho các trang khác (ví dụ: Teacher, Subject, Class)
     // Bạn có thể định nghĩa options riêng cho chúng hoặc dùng một mảng rỗng/mặc định

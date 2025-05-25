@@ -6,12 +6,13 @@ import Header from './components/header';
 import ScoreContent from './components/ScoreContent'; // Đường dẫn tới file của bạn
 import StudentContent from './components/StudentContent';
 import TeacherContent from './components/TeacherContent';
+import ClassContent from './components/ClassContent';
 
 // Các component cho các trang khác (tạm thời là placeholder)
 // const StudentContent = () => <div style={{padding: '20px'}}>Student Page Content - Coming Soon!</div>;
 // const TeacherContent = () => <div style={{padding: '20px'}}>Teacher Page Content - Coming Soon!</div>;
 const SubjectContent = () => <div style={{padding: '20px'}}>Subject Page Content - Coming Soon!</div>;
-const ClassContent = () => <div style={{padding: '20px'}}>Class Page Content - Coming Soon!</div>;
+// const ClassContent = () => <div style={{padding: '20px'}}>Class Page Content - Coming Soon!</div>;
 
 function App() {
 // NOTE: State để lưu trữ từ khóa tìm kiếm và trường tìm kiếm
@@ -46,6 +47,8 @@ function App() {
       setSearchField('fullName'); // Mặc định tìm theo tên cho trang Student, hoặc 'studentId' tùy bạn
     } else if (page === 'teacher') { // NOTE: Thêm case cho teacher
       setSearchField('fullName'); // Mặc định tìm theo tên cho trang Teacher
+    } else if (page === 'class') {
+      setSearchField('classId');
     } else {
       setSearchField(''); // Hoặc một giá trị mặc định chung cho các trang khác
     }
@@ -66,7 +69,7 @@ function App() {
       case 'subject':
         return <SubjectContent />; // Tạm thời chưa có gì
       case 'class':
-        return <ClassContent />; // Tạm thời chưa có gì
+        return <ClassContent searchTerm={searchTerm} searchField={searchField}/>; // Tạm thời chưa có gì
       default:
         return <ScoreContent searchTerm={searchTerm} searchField={searchField} />; // Mặc định về trang Score
     }

@@ -1,6 +1,6 @@
-/* src/components/AddTeacherModal.css */
-/* Copy toàn bộ nội dung từ AddStudentModal.css (ID: add_student_modal_css) */
-/* và chỉ cần đổi tên class .add-student-modal-content thành .add-teacher-modal-content */
+/* src/components/AddClassModal.css */
+/* Copy toàn bộ nội dung từ AddTeacherModal.css (ID: add_teacher_modal_css) */
+/* và chỉ cần đổi tên class .add-teacher-modal-content thành .add-class-modal-content */
 /* nếu bạn muốn style riêng biệt. */
 /* Nếu style giống hệt, bạn có thể dùng chung file CSS và class. */
 
@@ -24,13 +24,13 @@
   opacity: 1 !important;  
 }
 
-.modal-content.add-teacher-modal-content { /* Class riêng cho Add Teacher Modal */
+.modal-content.add-class-modal-content { /* Class riêng cho Add Class Modal */
   background-color: white;
   padding: 25px 35px 30px 35px;
   border-radius: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   width: 100%;
-  max-width: 480px; /* Kích thước có thể khác AddStudentModal */
+  max-width: 480px;
   z-index: 1001;
   position: relative;
   opacity: 0;
@@ -38,7 +38,7 @@
   transition: opacity 0.2s 0.1s ease-out, transform 0.2s 0.1s ease-out;
 }
 
-.modal-overlay.open .modal-content.add-teacher-modal-content {
+.modal-overlay.open .modal-content.add-class-modal-content {
   opacity: 1;
   transform: scale(1);
 }
@@ -68,7 +68,7 @@
   display: block;
 }
 
-.add-teacher-modal-content h2 {
+.add-class-modal-content h2 {
   margin-top: 20px;
   margin-bottom: 25px;
   font-size: 20px;
@@ -98,7 +98,7 @@
 .form-group input[type="text"] {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #dfe3e8;
   border-radius: 10px;
   font-size: 14px;
   box-sizing: border-box;
