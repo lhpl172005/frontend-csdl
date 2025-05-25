@@ -32,6 +32,11 @@ function Header({ searchTerm, searchField, onSearchChange, onSearchFieldChange, 
     { value: 'teacherId', label: 'Teacher ID' },
   ];
 
+  const subjectSearchOptions = [
+    { value: 'subjectName', label: 'Subject' },
+    { value: 'subjectId', label: 'Subject ID' }
+  ]
+
   const classSearchOptions = [
     { value: 'classId', label: 'Class ID' },
     { value: 'subjectId', label: 'Subject ID' },
@@ -46,6 +51,8 @@ function Header({ searchTerm, searchField, onSearchChange, onSearchFieldChange, 
     currentSearchOptions = scoreSearchOptions;
   } else if (activePage === 'teacher') { 
     currentSearchOptions = teacherSearchOptions;
+  } else if (activePage === 'subject') {
+    currentSearchOptions = subjectSearchOptions;
   } else if (activePage === 'class') {
     currentSearchOptions = classSearchOptions;
   } else {

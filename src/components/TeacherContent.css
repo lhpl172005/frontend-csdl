@@ -4,7 +4,6 @@
 .teacher-content-container {
   padding: 10px 10px;
   font-family: 'Nunito Sans', sans-serif;
-  background-color: #f9faff;
   min-height: calc(100vh - 64px);
 }
 
