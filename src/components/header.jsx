@@ -27,12 +27,19 @@ function Header({ searchTerm, searchField, onSearchChange, onSearchFieldChange, 
     { value: 'major', label: 'Major' },
   ];
 
+  const teacherSearchOptions = [
+    { value: 'fullName', label: 'Full Name' },
+    { value: 'teacherId', label: 'Teacher ID' },
+  ];
+
   // Chọn options dựa trên activePage
   let currentSearchOptions;
   if (activePage === 'student') {
     currentSearchOptions = studentSearchOptions;
   } else if (activePage === 'score') {
     currentSearchOptions = scoreSearchOptions;
+  } else if (activePage === 'teacher') { 
+    currentSearchOptions = teacherSearchOptions;
   } else {
     // Mặc định hoặc cho các trang khác (ví dụ: Teacher, Subject, Class)
     // Bạn có thể định nghĩa options riêng cho chúng hoặc dùng một mảng rỗng/mặc định

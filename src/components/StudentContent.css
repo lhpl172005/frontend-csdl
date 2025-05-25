@@ -6,7 +6,6 @@
 .student-content-container {
   padding: 10px 10px; /* Tăng padding ngang */
   font-family: 'Nunito Sans', sans-serif; /* Hoặc font bạn đã chọn */
-  background-color: #f9faff; /* Màu nền hơi khác để phân biệt nếu muốn */
   min-height: calc(100vh - 64px); /* 64px là chiều cao header ví dụ */
 }
 
