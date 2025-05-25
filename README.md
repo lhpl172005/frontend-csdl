@@ -7,11 +7,9 @@
 - [Tổng Quan](#tổng-quan)
 - [Tính Năng Chính](#tính-năng-chính)
 - [Công Nghệ Sử Dụng](#công-nghệ-sử-dụng)
-- [Cấu Trúc Thư Mục (Ví dụ)](#cấu-trúc-thư-mục-ví-dụ)
 - [Hướng Dẫn Cài Đặt và Chạy Dự Án](#hướng-dẫn-cài-đặt-và-chạy-dự-án)
 - [Hướng Dẫn Sử Dụng](#hướng-dẫn-sử-dụng)
 - [Đóng Góp](#đóng-góp)
-- [Giấy Phép](#giấy-phép)
 
 ## Tổng Quan
 
@@ -67,7 +65,7 @@ Hiện tại, ứng dụng bao gồm các trang quản lý sau:
 
 ## Hướng Dẫn Cài Đặt và Chạy Dự Án
 
-1.  **Clone repository (nếu có):**
+1.  **Clone repository:**
     ```bash
     git clone <URL_repository_cua_ban>
     cd frontend-csdl
@@ -76,25 +74,62 @@ Hiện tại, ứng dụng bao gồm các trang quản lý sau:
 2.  **Cài đặt dependencies:**
     ```bash
     npm install
-    # hoặc
-    yarn install
     ```
 
 3.  **Chạy server phát triển:**
     ```bash
     npm run dev
-    # hoặc
-    yarn dev
     ```
-    Ứng dụng sẽ thường chạy trên `http://localhost:5173` (hoặc một port khác được Vite chỉ định).
+    Ứng dụng sẽ thường chạy trên `http://localhost:5173`.
 
 4.  **Build dự án cho production:**
     ```bash
     npm run build
-    # hoặc
-    yarn build
     ```
-    Các file build sẽ nằm trong thư mục `dist/`.
+
+## Gợi Ý Phát Triển Backend
+
+Phần backend sẽ chịu trách nhiệm cung cấp các API để frontend có thể đọc và ghi dữ liệu vào cơ sở dữ liệu.
+
+**1. Công Nghệ Gợi Ý:**
+* **Framework:** Node.js và Express.js (phổ biến và dễ tích hợp nếu đã quen với JavaScript).
+* **Cơ sở dữ liệu:** PostgreSQL hoặc MySQL (phù hợp với dữ liệu có quan hệ như dự án này).
+* **ORM (tùy chọn):** Sequelize hoặc Prisma để tương tác với CSDL dễ dàng hơn.
+
+**2. Cơ Sở Dữ Liệu (Database):**
+Cần thiết kế các bảng để lưu trữ dữ liệu cho các thực thể chính sau:
+* `Students` (studentId, fullName, dob, major, ...)
+* `Teachers` (teacherId, fullName, ...)
+* `Subjects` (subjectId, subjectName, ...)
+* `Classes` (classId, subjectId, teacherId, ...)
+* `Scores` (scoreId, studentId, subjectId, scoreValue, ...)
+
+**3. Thiết Kế API (RESTful Endpoints):**
+Backend cần cung cấp các API endpoints để frontend thực hiện các thao tác CRUD (Create, Read, Update, Delete). Dưới đây là các ví dụ chính:
+
+* **Lấy danh sách (GET):**
+    * `GET /api/students`: Lấy danh sách sinh viên (hỗ trợ query params cho tìm kiếm, phân trang: `?search=...&page=...&limit=...`).
+    * Tương tự cho `teachers`, `subjects`, `classes`, `scores`.
+* **Tạo mới (POST):**
+    * `POST /api/students`: Tạo một sinh viên mới (dữ liệu gửi trong request body).
+    * Tương tự cho `teachers`, `subjects`, `classes`, `scores`.
+* **Cập nhật (PUT):**
+    * `PUT /api/scores/{scoreId}`: Cập nhật thông tin một điểm số (dữ liệu gửi trong request body).
+    * Tương tự cho các thực thể khác nếu có chức năng edit.
+* **Xóa (DELETE):**
+    * `DELETE /api/scores/{scoreId}`: Xóa một điểm số.
+    * Tương tự cho các thực thể khác nếu có chức năng delete.
+
+**4. Luồng Công Việc Gợi Ý:**
+
+1.  **Thiết lập dự án backend** (ví dụ: `npm init`, cài đặt Express).
+2.  **Thiết kế và tạo các bảng trong CSDL** đã chọn.
+3.  **Viết code kết nối** từ ứng dụng Express đến CSDL.
+4.  **Xây dựng các API endpoints** cho từng thực thể (ví dụ: bắt đầu với `GET /api/students` và `POST /api/students`).
+5.  **Kiểm tra các API** bằng công cụ như Postman hoặc Insomnia.
+6.  **Cấu hình CORS (Cross-Origin Resource Sharing)** trên server backend để cho phép frontend (chạy ở domain khác) có thể gọi API.
+7.  **Chạy server backend**.
+8.  **Trong code frontend (React):** Thay thế việc sử dụng dữ liệu mẫu (mock data) bằng cách dùng `Workspace` hoặc `axios` để gọi đến các API của backend.
 
 ## Hướng Dẫn Sử Dụng
 
