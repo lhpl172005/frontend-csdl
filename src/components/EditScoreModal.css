@@ -27,7 +27,7 @@
 .modal-content.edit-modal-content { /* Thêm class riêng để tránh xung đột */
   background-color: white;
   padding: 25px 40px 30px 40px;
-  border-radius: 12px;
+  border-radius: 20px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
   width: 100%;
   max-width: 700px; /* Tăng chiều rộng cho layout 2 cột */
@@ -134,7 +134,7 @@
   width: 100%;
   padding: 10px 12px; /* Padding nhỏ hơn một chút */
   border: 1px solid #ccc;
-  border-radius: 6px;
+  border-radius: 8px;
   font-size: 14px;
   box-sizing: border-box;
 }
@@ -163,7 +163,7 @@
   display: block;
   font-size: 12px; /* Nhãn nhỏ hơn */
   color: #6b7280; /* Màu xám cho nhãn */
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   text-transform: uppercase;
   text-align: center;
 }
@@ -192,7 +192,7 @@
 
 .modal-actions.edit-modal-actions button {
   padding: 12px 22px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 14px;
   font-weight: 550;
   cursor: pointer;

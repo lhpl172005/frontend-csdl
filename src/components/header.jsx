@@ -33,7 +33,7 @@ function Header({ searchTerm, searchField, onSearchChange, onSearchFieldChange, 
   ];
 
   const subjectSearchOptions = [
-    { value: 'subjectName', label: 'Subject' },
+    { value: 'subjectName', label: 'Subject Name' },
     { value: 'subjectId', label: 'Subject ID' }
   ]
 
